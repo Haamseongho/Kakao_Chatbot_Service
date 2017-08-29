@@ -6,7 +6,7 @@ var express = require("express");
 var router = express.Router();
 
 module.exports = function (router) {
-    router.get("/api/keyboard",function (req,res,next) {
+    router.get("/keyboard",function (req,res,next) {
         res.set({
             'content-type' : 'application/json'
         }).send(JSON.stringify(message.buttonsType()));
@@ -14,19 +14,4 @@ module.exports = function (router) {
     /*
     user_key => Kakao / 확인
      */
-    let checkUserKey = (req,res,next)=> {
-        if(req.body.user_key != undefined){
-            next();
-        }else{
-            res.status(500).send({error : 'user_key is invalid'});
-        }
-    };
-
-    router.post("/api/message",checkUserKey,function (req,res) {
-        let _obj = {
-            user_key : req.body.user_key,
-            type : req.body.type, // 버튼
-            content : req.body.content  // 버튼 내 내용물
-        }
-    })
 };
