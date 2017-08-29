@@ -3,7 +3,6 @@
  */
 const express = require("express");
 const router = express.Router();
-const message = require("../service/message");
 const db = require("../database/db");
 var db_connect = new db(router);
 var Keyboard = require("../api/keyboard");
