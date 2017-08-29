@@ -1,7 +1,7 @@
 /**
  * Created by haams on 2017-08-29.
  */
-let message = {};
+var message = {};
 
 message.buttons = ['아픈 부위' , '종합 병원'];
 

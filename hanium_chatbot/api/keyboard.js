@@ -14,7 +14,7 @@ module.exports = function (router) {
     /*
     user_key => Kakao / 확인
      */
-    let checkUserKey = (req,res,next)=> {
+    var checkUserKey = (req,res,next)=> {
         if(req.body.user_key != undefined){
             next();
         }else{
@@ -23,7 +23,7 @@ module.exports = function (router) {
     };
 
     router.post("/api/message",checkUserKey,function (req,res) {
-        let _obj = {
+        var _obj = {
             user_key : req.body.user_key,
             type : req.body.type, // 버튼
             content : req.body.content  // 버튼 내 내용물
