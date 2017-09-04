@@ -5,8 +5,9 @@ var express = require("express");
 var router = express.Router();
 var Message = require("./message");
 var message = {};
-
+var Question2 = require("./service/2nd_question");
 const msg1 = [Message.buttons];
+
 module.exports = function (router) {
 
     var checkUserKey = (req, res, next) => {
@@ -19,12 +20,20 @@ module.exports = function (router) {
         }
     };
 
+
     router.post("/message", checkUserKey, function (req, res) {
         const _obj = {
             user_key : req.body.user_key,
             type:req.body.type,
             content:req.body.content
-        }
+        };
+        var quest2 = new Question2();
+        quest2.choseMenu(req,req.body.content,function (err,btnMsg) {
+            if(err) console.log("버튼이 안눌림");
+            else{
+                quest3_msg();
+            }
+        });
         message = {
             "message": {
                 "text": "두 번째 질문은 텍스트 형태 입니다."
