@@ -28,12 +28,12 @@ module.exports = function (router) {
             content:req.body.content
         };
         var quest2 = new Question2();
-        quest2.choseMenu(req,req.body.content,function (err,btnMsg) {
+        /*quest2.choseMenu(req,req.body.content,function (err,btnMsg) {
             if(err) console.log("버튼이 안눌림");
             else{
                 quest3_msg();
             }
-        });
+        });*/
         message = {
             "message": {
                 "text": "두 번째 질문은 텍스트 형태 입니다."
