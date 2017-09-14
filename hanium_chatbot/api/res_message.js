@@ -27,32 +27,29 @@ module.exports = function (router) {
             type:req.body.type,
             content:req.body.content
         };
-//        var quest2 = new Question2();
-        /*quest2.choseMenu(req,req.body.content,function (err,btnMsg) {
-            if(err) console.log("버튼이 안눌림");
-            else{
-                quest3_msg();
-            }
-        });*/
+
+        console.log(_obj);
+        var quest2 = new Question2();
+
         message = {
-            "message": {
-                "text": "두 번째 질문은 텍스트 형태 입니다."
-            }
-	},
-
+            "text" :"두 번째 질문입니다.",
+            "message_button":{
+                "label" : "메세지 버튼",
+                "url": "https://github.com/haamseongho"
+            },
             "keyboard": {
-                 "type": "buttons",
-                 "buttons": [
-                     "치과",
-                     "정형외과",
-                     "소아과",
-                     "이비인후과",
-                     "신경과",
-                     "내과"
-                 ]
+                "type": "buttons",
+                "buttons": [
+                    "치과",
+                    "정형외과",
+                    "소아과",
+                    "이비인후과",
+                    "신경과",
+                    "내과"
+                ]
             }
+        };
 
-        
         res.set({
             'content-type': 'application/json'
         }).send(JSON.stringify(message));
