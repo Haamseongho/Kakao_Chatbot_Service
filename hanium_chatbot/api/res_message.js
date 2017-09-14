@@ -6,7 +6,7 @@ var router = express.Router();
 var Message = require("./message");
 var message = {};
 //var Question2 = require("./service/2nd_question");
-const msg1 = [Message.buttons];
+//const msg1 = [Message.buttons];
 
 module.exports = function (router) {
 
@@ -29,14 +29,16 @@ module.exports = function (router) {
         };
 
         console.log(_obj);
-        var quest2 = new Question2();
 
         message = {
-            "text" :"두 번째 질문입니다.",
+	    "message":{
+		"text":"두번째 질문 입니다."
+            },
             "message_button":{
                 "label" : "메세지 버튼",
                 "url": "https://github.com/haamseongho"
             },
+	
             "keyboard": {
                 "type": "buttons",
                 "buttons": [
@@ -48,6 +50,7 @@ module.exports = function (router) {
                     "내과"
                 ]
             }
+        
         };
 
         res.set({
@@ -55,3 +58,4 @@ module.exports = function (router) {
         }).send(JSON.stringify(message));
     });
 };
+
