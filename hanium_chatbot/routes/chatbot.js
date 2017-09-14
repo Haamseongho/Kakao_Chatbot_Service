@@ -10,6 +10,6 @@ var ResMessage = require("../api/res_message");
 
 
 var keyboard = new Keyboard(router);
-//var resMessage = new ResMessage(router);
+var resMessage = new ResMessage(router);
 
 module.exports = router;
