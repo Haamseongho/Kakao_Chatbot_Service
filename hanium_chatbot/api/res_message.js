@@ -5,7 +5,7 @@ var express = require("express");
 var router = express.Router();
 var Message = require("./message");
 var message = {};
-var Question2 = require("./service/2nd_question");
+//var Question2 = require("./service/2nd_question");
 const msg1 = [Message.buttons];
 
 module.exports = function (router) {
@@ -27,7 +27,7 @@ module.exports = function (router) {
             type:req.body.type,
             content:req.body.content
         };
-        var quest2 = new Question2();
+//        var quest2 = new Question2();
         /*quest2.choseMenu(req,req.body.content,function (err,btnMsg) {
             if(err) console.log("버튼이 안눌림");
             else{
@@ -37,22 +37,22 @@ module.exports = function (router) {
         message = {
             "message": {
                 "text": "두 번째 질문은 텍스트 형태 입니다."
-            },
-            "keyboard": {
-                "type" : "text",
+            }
+	},
 
-                // "type": "buttons",
-                // "buttons": [
-                //     "치과",
-                //     "정형외과",
-                //     "소아과",
-                //     "이비인후과",
-                //     "신경과",
-                //     "내과"
-                // ]
+            "keyboard": {
+                 "type": "buttons",
+                 "buttons": [
+                     "치과",
+                     "정형외과",
+                     "소아과",
+                     "이비인후과",
+                     "신경과",
+                     "내과"
+                 ]
             }
 
-        };
+        
         res.set({
             'content-type': 'application/json'
         }).send(JSON.stringify(message));
