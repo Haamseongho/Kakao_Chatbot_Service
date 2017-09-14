@@ -31,14 +31,13 @@ module.exports = function (router) {
         console.log(_obj);
 
         message = {
-	    "message":{
-		"text":"두번째 질문 입니다."
+	        "message": {
+                "text": "두번째 질문 입니다.",
+                "message_button": {
+                    "label": "메세지 버튼",
+                    "url": "https://github.com/haamseongho"
+                },
             },
-            "message_button":{
-                "label" : "메세지 버튼",
-                "url": "https://github.com/haamseongho"
-            },
-	
             "keyboard": {
                 "type": "buttons",
                 "buttons": [
@@ -50,7 +49,6 @@ module.exports = function (router) {
                     "내과"
                 ]
             }
-        
         };
 
         res.set({
