@@ -11,9 +11,27 @@ var users = require('./routes/users');
 var chatbot = require("./routes/chatbot");
 
 var port = process.env.PORT || 2721;
-
+var dbUrl = "mongodb://hanium_frontier:123123@ds161630.mlab.com:61630/hanium_frontier";
+var MongoClient = require("mongodb").MongoClient;
+var mongoose = require("mongoose");
 
 var app = express();
+
+/*
+  MongoClient.connect(dbUrl,function (err) {
+        if(err) console.log("db is not connected");
+        else{
+            console.log("db is connected well");
+        }
+    });
+*/
+
+mongoose.connect(dbUrl, function (err) {
+    if (err) {
+        return console.log("There is no database");
+    }
+    console.log("Database is connected well!");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

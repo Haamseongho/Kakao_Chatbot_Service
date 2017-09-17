@@ -5,10 +5,10 @@ var express = require("express");
 var router = express.Router();
 var Message = require("./message");
 var message = {};
-var Message = require("../models/messageDB");
+var MessageDB = require("../models/messageDB");
 var index = 0;
+var assert = require("assert");
 // part / dest 저장
-const msg1 = [Message.buttons];
 
 module.exports = function (router) {
 
@@ -25,11 +25,14 @@ module.exports = function (router) {
     function hurt_part_check() {
         message = {
             "message": {
-                "text": "아픈 부위를 선택해주세요"
+                "text": "가야할 병원을 선택해주세요."
             },
             "keyboard": {
                 "type": "buttons",
                 "buttons": [
+                   /*
+			병원 분류해서 15개로 추려서 정리할 것
+                   */
                     "목",
                     "피부",
                     "코",
@@ -67,9 +70,32 @@ module.exports = function (router) {
 
     }
     
-    function saveSecondReply(reply) {
-        var message2 = new Message();
+    function save_second_reply(reply) {
+	console.log("되낭?");
+        var message2 = new MessageDB();
+        
         if(index == 1){
+/*
+          var message3 = new MessageDB({
+              "part" : reply ,
+              "dest" : "목적지"
+          });
+          var promise = message3.save();
+          assert.ok(promise instanceof require('mpromise'));
+ 
+          promise.then(function(doc){
+             console.log('well done');
+          });
+  */
+      /* 
+          message3.save(function(err,message){
+	     if(err) return res.status(404).send('error');
+             else{
+                return res.status(200).json(message);
+             }
+         });
+          */
+           
             message2.uploadPart(reply,function (err,message) {
                 if(err) return console.log("부위 별 데이터 저장 실패");
                 else{
@@ -77,6 +103,7 @@ module.exports = function (router) {
                     index = 0;
                 }
             })
+          
         }else if(index == 2){
             message2.uploadDest(reply,function(err,message){
                 if(err) return console.log("목적지 데이터 저장 실패");
@@ -97,7 +124,7 @@ module.exports = function (router) {
             content: req.body.content
         };
 
-        if (_obj.content == "어디가 아프신가요?.?") {
+        if (_obj.content == "가야할 병원 분류를 선택") {
             console.log("첫 번째 버튼 클릭");
             hurt_part_check();
             index = 1;
@@ -112,7 +139,8 @@ module.exports = function (router) {
             index = 2;
         }
         else {
-            saveSecondReply(_obj.content);
+            save_second_reply(_obj.content);
+	    console.log(_obj.content + " / " + "된당?");
         }
 
         res.set({

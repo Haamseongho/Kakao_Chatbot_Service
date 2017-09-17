@@ -3,7 +3,7 @@
  */
 var message = {};
 
-message.buttons = ['어디가 아프신가요?.? ', '현재 위치 상 가까운 병원들', '가야할 곳에서 가까운 병원들'];
+message.buttons = ['가야할 병원 분류를 선택', '현재 위치 상 가까운 병원들', '가야할 곳에서 가까운 병원들'];
 message.texts = "가야할 위치를 입력해주세요.";
 message.textType = () => {
     return {

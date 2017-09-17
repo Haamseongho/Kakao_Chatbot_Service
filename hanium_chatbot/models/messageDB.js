@@ -8,14 +8,16 @@ var messageSchema = new Schema({
     dest: { type:String , default: "" }
 });
 
-var Message = mongoose.model("Message",messageSchema);
 
 messageSchema.methods.uploadPart = function(part,cb){
-    this.model("Message").insert({part : part},cb);
+    console.log("데이터 저장");
+    this.model("Message").collection.insert({part : part},cb);
 };
 
-messageSchema.methods.uploadDest = function (dest,cb) {
-    this.model("Message").insert({dest:dest},cb);
+messageSchema.methods.uploadDest = function(dest,cb) {
+    console.log("데이터 저장2");
+    this.model("Message").collection.insert({dest:dest},cb);
 };
+var Message = mongoose.model("Message",messageSchema);
 
 module.exports = Message;
