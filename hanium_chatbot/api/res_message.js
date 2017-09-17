@@ -6,7 +6,7 @@ var router = express.Router();
 var Message = require("./message");
 var message = {};
 //var Question2 = require("./service/2nd_question");
-//const msg1 = [Message.buttons];
+const msg1 = [Message.buttons];
 
 module.exports = function (router) {
 
@@ -28,6 +28,7 @@ module.exports = function (router) {
             content:req.body.content
         };
 
+        //console.log(msg1[1]);
         console.log(_obj);
 
         message = {
