@@ -4,7 +4,7 @@
 const request = require("request");
 const quest2 = {};
 var message = require("../message");
-var Response = require("../../models/responseDB");
+var Response = require("../../models/messageDB");
 /*
  DB에서
  */
