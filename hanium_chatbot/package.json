@@ -13,6 +13,8 @@
     "debug": "~2.6.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
+    "file-on-write": "^1.1.1",
+    "mjpeg-camera": "^1.7.2",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.8",
     "morgan": "~1.7.0",

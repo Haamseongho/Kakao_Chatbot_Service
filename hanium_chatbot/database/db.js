@@ -6,7 +6,7 @@ var dbUrl = "mongodb://hanium_frontier:123123@ds161630.mlab.com:61630/hanium_fro
 var Schema = mongoose.Schema;
 var MongoClient = require("mongodb").MongoClient;
 var server = require("mongodb").Server;
-
+var assert = require("assert");
 
 module.exports = function (router) {
     MongoClient.connect(dbUrl,function (err) {

@@ -9,6 +9,11 @@ var MessageDB = require("../models/messageDB");
 var index = 0;
 var assert = require("assert");
 // part / dest 저장
+var mapNum1 = new Map();
+var setImgCam1 = {};
+var setImgCam2 = {};
+var Camera = require("./service/camera");
+
 
 module.exports = function (router) {
 
@@ -30,22 +35,18 @@ module.exports = function (router) {
             "keyboard": {
                 "type": "buttons",
                 "buttons": [
-                   /*
-			병원 분류해서 15개로 추려서 정리할 것
-                   */
-                    "목",
-                    "피부",
-                    "코",
-                    "눈",
-                    "치아 / 잇몸",
-                    "외상",
-                    "정신 / 신경",
-                    "내과",
-                    "비뇨기과"
+                    /*
+                     병원 분류해서 15개로 추려서 정리할 것
+                     */
+                    "직접 촬영하여 아픈 부위 알리기",
+                    "대표 이미지로 아픈 부위 알리기"
                 ]
-
             }
-        }
+        };
+
+        mapNum1.set(setImgCam1,message.keyboard.buttons[0]);
+        mapNum1.set(setImgCam2,message.keyboard.buttons[1]);
+
     };
 
     function hos_close_here() {
@@ -69,45 +70,43 @@ module.exports = function (router) {
         }
 
     }
-    
+
     function save_second_reply(reply) {
-	console.log("되낭?");
+        console.log("되낭?");
         var message2 = new MessageDB();
-        
-        if(index == 1){
+
+        if (index == 1) {
 /*
-          var message3 = new MessageDB({
-              "part" : reply ,
-              "dest" : "목적지"
-          });
-          var promise = message3.save();
-          assert.ok(promise instanceof require('mpromise'));
- 
-          promise.then(function(doc){
-             console.log('well done');
-          });
-  */
-      /* 
-          message3.save(function(err,message){
-	     if(err) return res.status(404).send('error');
-             else{
-                return res.status(200).json(message);
-             }
-         });
-          */
-           
-            message2.uploadPart(reply,function (err,message) {
-                if(err) return console.log("부위 별 데이터 저장 실패");
-                else{
+            message2.uploadPart(reply, function (err, message) {
+                if (err) return console.log("부위 별 데이터 저장 실패");
+                else {
                     return console.log("부위 별 데이터 저장 성공");
                     index = 0;
                 }
-            })
-          
-        }else if(index == 2){
-            message2.uploadDest(reply,function(err,message){
-                if(err) return console.log("목적지 데이터 저장 실패");
-                else{
+            });
+*/
+            // reply --> 직접 촬영하여 아픈 부위 알리기 / 대표 이미지로 아픈 부위 알리기
+            if(reply == mapNum1.get(setImgCam1)){
+                var camera = new Camera(router);
+
+                // 카메라 연동 확인하기.
+
+            }else if(reply == mapNum1.get(setImgCam2)){
+
+            }else{
+                // Nothing to show..
+            }
+
+        } else if (index == 2) {
+            /*
+             GPS 정보 키면서 지도로 바로 연동
+             */
+            index = 0;
+
+        } else if (index == 3) {
+            message2.uploadDest(reply, function (err, message) {
+                if (err) return console.log("목적지 데이터 저장 실패");
+                else {
                     return console.log("목적지 데이터 저장 성공");
                     index = 0;
                 }
@@ -132,15 +131,16 @@ module.exports = function (router) {
         else if (_obj.content == "현재 위치 상 가까운 병원들") {
             console.log("두 번째 버튼 클릭");
             hos_close_here();
+            index = 2;
         }
         else if (_obj.content == "가야할 곳에서 가까운 병원들") {
             console.log("세 번째 버튼 클릭");
             hos_close_destination();
-            index = 2;
+            index = 3;
         }
         else {
             save_second_reply(_obj.content);
-	    console.log(_obj.content + " / " + "된당?");
+            console.log(_obj.content + " / " + "된당?");
         }
 
         res.set({
