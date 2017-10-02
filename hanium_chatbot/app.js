@@ -17,6 +17,7 @@ var mongoose = require("mongoose");
 
 var app = express();
 
+var test = require("./routes/test");
 /*
   MongoClient.connect(dbUrl,function (err) {
         if(err) console.log("db is not connected");
@@ -49,6 +50,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/',chatbot);
+app.use("/",test);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
