@@ -44,8 +44,8 @@ module.exports = function (router) {
             }
         };
 
-        mapNum1.set(setImgCam1,message.keyboard.buttons[0]);
-        mapNum1.set(setImgCam2,message.keyboard.buttons[1]);
+        mapNum1.set(setImgCam1, message.keyboard.buttons[0]);
+        mapNum1.set(setImgCam2, message.keyboard.buttons[1]);
 
     };
 
@@ -70,18 +70,19 @@ module.exports = function (router) {
             }
         }
     }
-    function sendLocNowInfo(){
+
+    function sendLocNowInfo() {
         message = {
-	    "message":{
-		"text":"현재 위치를 체크합니다.",
-                "photo" : {
-                    "url":"http://52.79.83.51:2721/photo/here.JPG",
-                    "width" :640,
-                    "height" : 480
+            "message": {
+                "text": "현재 위치를 체크합니다.",
+                "photo": {
+                    "url": "http://cfile30.uf.tistory.com/image/223CD847573EC9F433D6A3",
+                    "width": 640,
+                    "height": 480
                 },
-                "message_button":{
-                    "label" : "현재 위치를 측정합니다. 버튼을 눌러주세요.",
-                    "url":"http://www.google.com"
+                "message_button": {
+                    "label": "현재 위치를 측정합니다. 버튼을 눌러주세요.",
+                    "url": "http://map.daum.net/?eX=523953&eY=1084098&eName=%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8C%90%EA%B5%90%EC%98%A4%ED%94%BC%EC%8A%A4"
                 }
             }
         };
@@ -93,24 +94,24 @@ module.exports = function (router) {
         var message2 = new MessageDB();
 
         if (index == 1) {
-/*
-            message2.uploadPart(reply, function (err, message) {
-                if (err) return console.log("부위 별 데이터 저장 실패");
-                else {
-                    return console.log("부위 별 데이터 저장 성공");
-                    index = 0;
-                }
-            });
-*/
+            /*
+             message2.uploadPart(reply, function (err, message) {
+             if (err) return console.log("부위 별 데이터 저장 실패");
+             else {
+             return console.log("부위 별 데이터 저장 성공");
+             index = 0;
+             }
+             });
+             */
             // reply --> 직접 촬영하여 아픈 부위 알리기 / 대표 이미지로 아픈 부위 알리기
-            if(reply == mapNum1.get(setImgCam1)){
- //               var camera = new Camera(router);
+            if (reply == mapNum1.get(setImgCam1)) {
+                //               var camera = new Camera(router);
 
                 // 카메라 연동 확인하기.
 
-            }else if(reply == mapNum1.get(setImgCam2)){
+            } else if (reply == mapNum1.get(setImgCam2)) {
 
-            }else{
+            } else {
                 // Nothing to show..
             }
 
