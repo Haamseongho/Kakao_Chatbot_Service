@@ -5,6 +5,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/map",function (req,res,next) {
+   console.log("check--> map.ejs");
    res.render("map.ejs");
 });
 

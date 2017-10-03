@@ -85,7 +85,7 @@ module.exports = function (router) {
                     "label": "위치 확인",
                     "url": "http://map.daum.net/?eX=523953&eY=1084098&eName=%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8C%90%EA%B5%90%EC%98%A4%ED%94%BC%EC%8A%A4"
                    */
-                    "label": "현재 위치를 측정합니다. 버튼을 눌러주세요.",
+                    "label":"위치 확인",
                     "url": "http://52.79.83.51:2721/map"
                 }
             }
