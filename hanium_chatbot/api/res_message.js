@@ -68,8 +68,24 @@ module.exports = function (router) {
                 "type": "text"
             }
         }
-
     }
+    function sendLocNowInfo(){
+        message = {
+            "message" : {
+                "text" : "현재 위치를 체크합니다.",
+                "photo" : {
+                    "url":"http://52.79.83.51:2721/photo/here.JPG",
+                    "width" :640,
+                    "height" : 480
+                },
+                "message_button":{
+                    "label" : "현재 위치를 측정합니다. 버튼을 눌러주세요.",
+                    "url":"https://www.google.com"
+                }
+            }
+        }
+    };
+
 
     function save_second_reply(reply) {
         console.log("되낭?");
@@ -115,9 +131,6 @@ module.exports = function (router) {
         }
 
     }
-   function sendLocNowInfo(){
-	
-   };
 
 
     router.post("/message", checkUserKey, function (req, res) {
