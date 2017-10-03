@@ -1,7 +1,7 @@
 /**
  * Created by haams on 2017-10-02.
  */
-var MjpegCamera = requuire("mjpeg-camera");
+var MjpegCamera = require("mjpeg-camera");
 var FileOnWrite = require("file-on-write");
 var fs = require("fs");
 var express = require("express");
@@ -21,6 +21,7 @@ module.exports = function (router) {
     });
 
 // MjpegCamera 객체 만들기
+   
     var camera = new MjpegCamera({
         name: 'cadi',
         user: 'admin',
@@ -40,4 +41,5 @@ module.exports = function (router) {
             fs.writeFile('hurt.jpeg', frame, process.exit);
         });
     }, 60 * 60 * 1000);
+  
 };

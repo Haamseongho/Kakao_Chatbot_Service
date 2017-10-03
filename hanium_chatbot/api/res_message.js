@@ -12,7 +12,7 @@ var assert = require("assert");
 var mapNum1 = new Map();
 var setImgCam1 = {};
 var setImgCam2 = {};
-var Camera = require("./service/camera");
+//var Camera = require("./service/camera");
 
 
 module.exports = function (router) {
@@ -87,7 +87,7 @@ module.exports = function (router) {
 */
             // reply --> 직접 촬영하여 아픈 부위 알리기 / 대표 이미지로 아픈 부위 알리기
             if(reply == mapNum1.get(setImgCam1)){
-                var camera = new Camera(router);
+ //               var camera = new Camera(router);
 
                 // 카메라 연동 확인하기.
 
@@ -101,6 +101,7 @@ module.exports = function (router) {
             /*
              GPS 정보 키면서 지도로 바로 연동
              */
+            sendLocNowInfo();
             index = 0;
 
         } else if (index == 3) {
@@ -114,6 +115,9 @@ module.exports = function (router) {
         }
 
     }
+   function sendLocNowInfo(){
+	
+   };
 
 
     router.post("/message", checkUserKey, function (req, res) {
