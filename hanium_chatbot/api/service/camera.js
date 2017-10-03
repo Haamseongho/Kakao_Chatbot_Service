@@ -1,7 +1,7 @@
 /**
  * Created by haams on 2017-10-02.
  */
-var MjpegCamera = requuire("mjpeg-camera");
+var MjpegCamera = require("mjpeg-camera");
 var FileOnWrite = require("file-on-write");
 var fs = require("fs");
 var express = require("express");
