@@ -18,6 +18,7 @@ var mongoose = require("mongoose");
 var app = express();
 
 var test = require("./routes/test");
+var map = require("./routes/map");
 /*
   MongoClient.connect(dbUrl,function (err) {
         if(err) console.log("db is not connected");
@@ -51,6 +52,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/',chatbot);
 app.use("/",test);
+app.use("/",map);
+// 지도 연동
 
 
 // catch 404 and forward to error handler
