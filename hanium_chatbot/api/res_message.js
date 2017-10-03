@@ -70,21 +70,40 @@ module.exports = function (router) {
         }
     }
     function sendLocNowInfo(){
+/*
         message = {
-            "message" : {
-                "text" : "현재 위치를 체크합니다.",
+*/
+
+               /*
                 "photo" : {
                     "url":"http://52.79.83.51:2721/photo/here.JPG",
                     "width" :640,
                     "height" : 480
                 },
+               */
+                /*
                 "message_button":{
                     "label" : "현재 위치를 측정합니다. 버튼을 눌러주세요.",
-                    "url":"https://www.google.com"
+                    "url":"http://www.google.com"
                 }
             }
-        }
-    };
+     */
+   message = {
+            "message": {
+                "text": "가야할 병원을 선택해주세요.1"
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    /*
+                     병원 분류해서 15개로 추려서 정리할 것
+                     */
+                    "직접 촬영하여 아픈 부위 알리기",
+                    "대표 이미지로 아픈 부위 알리기"
+                ]
+            }
+        };
+      };
 
 
     function save_second_reply(reply) {
