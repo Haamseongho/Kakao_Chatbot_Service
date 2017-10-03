@@ -53,6 +53,7 @@ module.exports = function (router) {
         /*
          현재 위치 GPS 정보 뽑아오기 / DB에 저장된 병원 정보 중 위치랑 비교하기 (GEO-Coding 필요) (- 위도 / 경도로 바꿔서 매칭하기 위함)
          */
+        sendLocNowInfo();
     }
 
     function hos_close_destination() {
@@ -117,7 +118,7 @@ module.exports = function (router) {
             /*
              GPS 정보 키면서 지도로 바로 연동
              */
-            sendLocNowInfo();
+            console.log("현재 위치 정보 보내기 완료");
             index = 0;
 
         } else if (index == 3) {
