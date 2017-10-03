@@ -21,6 +21,7 @@ module.exports = function (router) {
     });
 
 // MjpegCamera 객체 만들기
+   
     var camera = new MjpegCamera({
         name: 'cadi',
         user: 'admin',
@@ -40,4 +41,5 @@ module.exports = function (router) {
             fs.writeFile('hurt.jpeg', frame, process.exit);
         });
     }, 60 * 60 * 1000);
+  
 };
