@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>위치 정보 체크(현재)</title>
+</head>
+<body>
+
+<div id="map" style="width:500px;height:400px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff35a43d7fceeb6a0ad00db5c3644b45"></script>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new daum.maps.LatLng(33.450701, 126.570667),
+        level: 3
+    };
+
+    var map = new daum.maps.Map(container, options);
+</script>
+
+</body>
+</html>
