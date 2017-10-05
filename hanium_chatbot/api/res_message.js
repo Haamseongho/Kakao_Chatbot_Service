@@ -125,8 +125,6 @@ module.exports = function (router) {
                     "height": 480
                 },
                 "message_button": {
-
-                    
                     "label": "위치 확인",
                     "url": "http://map.daum.net/?eX=523953&eY=1084098&eName=%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8C%90%EA%B5%90%EC%98%A4%ED%94%BC%EC%8A%A4"
                     /*

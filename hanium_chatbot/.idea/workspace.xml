@@ -63,8 +63,8 @@
       <file leaf-file-name="res_message.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/res_message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="99" column="5" lean-forward="false" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
+            <state relative-caret-position="151">
+              <caret line="223" column="70" lean-forward="false" selection-start-line="223" selection-start-column="64" selection-end-line="223" selection-end-column="70" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -75,8 +75,8 @@
       <file leaf-file-name="setLocationService.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/location/setLocationService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+            <state relative-caret-position="418">
+              <caret line="44" column="2" lean-forward="false" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="2" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -145,6 +145,7 @@
       <find>start</find>
       <find>된당</find>
       <find>setLocation1</find>
+      <find>router</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -165,8 +166,8 @@
         <option value="$PROJECT_DIR$/views/map.ejs" />
         <option value="$PROJECT_DIR$/api/message.js" />
         <option value="$PROJECT_DIR$/api/setLocationService/setLocationService.js" />
-        <option value="$PROJECT_DIR$/api/res_message.js" />
         <option value="$PROJECT_DIR$/api/location/setLocationService.js" />
+        <option value="$PROJECT_DIR$/api/res_message.js" />
       </list>
     </option>
   </component>
@@ -459,12 +460,12 @@
       <workItem from="1506936871884" duration="1219000" />
       <workItem from="1506990619263" duration="20000" />
       <workItem from="1507027533915" duration="5102000" />
-      <workItem from="1507188888557" duration="6433000" />
+      <workItem from="1507188888557" duration="6791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68428000" />
+    <option name="totallyTimeSpent" value="68786000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -477,7 +478,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="507" y="119" width="1498" height="1002" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26373628" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32736573" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -486,7 +487,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3559719" sideWeight="0.49666348" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3559719" sideWeight="0.49666348" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -877,8 +878,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/res_message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="99" column="5" lean-forward="false" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
+        <state relative-caret-position="151">
+          <caret line="223" column="70" lean-forward="false" selection-start-line="223" selection-start-column="64" selection-end-line="223" selection-end-column="70" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
@@ -887,8 +888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/location/setLocationService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="41" column="28" lean-forward="false" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        <state relative-caret-position="418">
+          <caret line="44" column="2" lean-forward="false" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="2" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
