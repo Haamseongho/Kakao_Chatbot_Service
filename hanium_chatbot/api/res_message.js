@@ -99,6 +99,36 @@ module.exports = function (router) {
         subindex1 = 3;
     }
 
+    function setBtnGangNam() {
+        message = {
+            "message": {
+                "text": "가야할 병원을 선택해주세요."
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    /*
+                     동
+                     */
+                    "개포동",
+                    "논현동",
+                    "대치동",
+                    "도곡동",
+                    "삼성동",
+                    "세곡동",
+                    "수서동",
+                    "신사동",
+                    "압구정동",
+                    "역삼동",
+                    "율현동",
+                    "일원동",
+                    "자곡동",
+                    "청담동"
+
+                ]
+            }
+        };
+    }
 
     function hos_close_destination() {
         /*
@@ -128,18 +158,13 @@ module.exports = function (router) {
                     "label": "위치 확인",
                     "url": "http://map.daum.net/?eX=523953&eY=1084098&eName=%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8C%90%EA%B5%90%EC%98%A4%ED%94%BC%EC%8A%A4"
                     /*
-                    "label":"위치 확인",
-                    "url": "http://52.79.83.51:2721/map"
-               	     */
-                 }
-/*
                      "label":"위치 확인",
                      "url": "http://52.79.83.51:2721/map"
                      */
                 }
             }
         };
-   
+    };
 
 
     function save_second_reply(reply) {
@@ -229,5 +254,5 @@ module.exports = function (router) {
             'content-type': 'application/json'
         }).send(JSON.stringify(message));
     });
-}
+};
 
