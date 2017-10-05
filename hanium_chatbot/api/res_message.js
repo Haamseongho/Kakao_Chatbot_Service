@@ -226,7 +226,8 @@ module.exports = function (router) {
         }
         else if (_obj.content == "현재 위치에서 가야할 병원 검색") {
             console.log("두 번째 버튼 클릭");
-            hos_close_here();
+            setLocation1();
+            //hos_close_here();
             index = 2;
         }
         else if (_obj.content == "가야할 곳에서 가까운 병원들") {
@@ -242,7 +243,7 @@ module.exports = function (router) {
             }else if(subindex1 == 2){
 
             }else if(subindex1 == 3){
-                setLocation1();
+
             }
             console.log(_obj.content + " / " + "된당?");
         }
