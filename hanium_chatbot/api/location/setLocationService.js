@@ -4,7 +4,7 @@
 var express = require("express");
 var router = express.Router();
 var message = {};
-
+/*
 function setBtnGangNam() {
     message = {
         "message": {
@@ -13,9 +13,11 @@ function setBtnGangNam() {
         "keyboard": {
             "type": "buttons",
             "buttons": [
+               */
                 /*
                  동
                  */
+                /*
                 "개포동",
                 "논현동",
                 "대치동",
@@ -35,12 +37,13 @@ function setBtnGangNam() {
         }
     };
 }
-
+*/
 
 module.exports = function (router,name) {
     switch (name){
         case "강남구":
-            setBtnGangNam();
+            console.log("호잇!");
+           // setBtnGangNam();
             break;
     }
 };

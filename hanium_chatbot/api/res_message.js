@@ -175,6 +175,7 @@ module.exports = function (router) {
             /*
              두 번째 질문에서 버튼 클릭했을 때임!!
              */
+            console.log('index 값 : 2 ');
             subindex1 = 3;
 
         } else if (index == 3) {
@@ -221,6 +222,7 @@ module.exports = function (router) {
 
             }
             else if (subindex1 == 3) {
+                console.log('subindex1 의 값 : 3 ' );
                 var setLocationService = new SetLocationService(router, _obj.content);
             }
         }
