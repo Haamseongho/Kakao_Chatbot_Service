@@ -12,6 +12,10 @@ var assert = require("assert");
 var mapNum1 = new Map();
 var setImgCam1 = {};
 var setImgCam2 = {};
+var subindex1 = 0;
+var subIdxMap = new Map();
+
+
 //var Camera = require("./service/camera");
 
 
@@ -51,9 +55,79 @@ module.exports = function (router) {
 
     function hos_close_here() {
         /*
-         현재 위치 GPS 정보 뽑아오기 / DB에 저장된 병원 정보 중 위치랑 비교하기 (GEO-Coding 필요) (- 위도 / 경도로 바꿔서 매칭하기 위함)
+         구로 나누기 / 동으로 나누기
          */
         sendLocNowInfo();
+    }
+
+    function setLocation1() { // 구
+        message = {
+            "message": {
+                "text": "가야할 병원을 선택해주세요."
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    "강남구",
+                    "강동구",
+                    "강북구",
+                    "강서구",
+                    "관악구",
+                    "광진구",
+                    "구로구",
+                    "금천구",
+                    "노원구",
+                    "도봉구",
+                    "동대문구",
+                    "동작구",
+                    "마포구",
+                    "서대문구",
+                    "서초구",
+                    "성동구",
+                    "성북구",
+                    "송파구",
+                    "양천구",
+                    "영등포구",
+                    "용산구",
+                    "은평구",
+                    "종로구",
+                    "중구",
+                    "중랑구"
+                ]
+            }
+        };
+        subindex1 = 3;
+    }
+
+    function setBtnGangNam() {
+        message = {
+            "message": {
+                "text": "가야할 병원을 선택해주세요."
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    /*
+                     동
+                     */
+                    "개포동",
+                    "논현동",
+                    "대치동",
+                    "도곡동",
+                    "삼성동",
+                    "세곡동",
+                    "수서동",
+                    "신사동",
+                    "압구정동",
+                    "역삼동",
+                    "율현동",
+                    "일원동",
+                    "자곡동",
+                    "청담동"
+
+                ]
+            }
+        };
     }
 
     function hos_close_destination() {
@@ -81,6 +155,7 @@ module.exports = function (router) {
                     "height": 480
                 },
                 "message_button": {
+
                     
                     "label": "위치 확인",
                     "url": "http://map.daum.net/?eX=523953&eY=1084098&eName=%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8C%90%EA%B5%90%EC%98%A4%ED%94%BC%EC%8A%A4"
@@ -89,6 +164,11 @@ module.exports = function (router) {
                     "url": "http://52.79.83.51:2721/map"
                	     */
                  }
+/*
+                     "label":"위치 확인",
+                     "url": "http://52.79.83.51:2721/map"
+                     */
+                }
             }
         };
     };
@@ -104,7 +184,7 @@ module.exports = function (router) {
              if (err) return console.log("부위 별 데이터 저장 실패");
              else {
              return console.log("부위 별 데이터 저장 성공");
-             index = 0;
+             index = 4;
              }
              });
              */
@@ -125,18 +205,17 @@ module.exports = function (router) {
              GPS 정보 키면서 지도로 바로 연동
              */
             console.log("현재 위치 정보 보내기 완료");
-            index = 0;
+            subindex1 = 3;
 
         } else if (index == 3) {
             message2.uploadDest(reply, function (err, message) {
                 if (err) return console.log("목적지 데이터 저장 실패");
                 else {
                     return console.log("목적지 데이터 저장 성공");
-                    index = 0;
+                    subindex1 = 4;
                 }
             })
         }
-
     }
 
 
@@ -152,7 +231,7 @@ module.exports = function (router) {
             hurt_part_check();
             index = 1;
         }
-        else if (_obj.content == "현재 위치 상 가까운 병원들") {
+        else if (_obj.content == "현재 위치에서 가야할 병원 검색") {
             console.log("두 번째 버튼 클릭");
             hos_close_here();
             index = 2;
@@ -163,7 +242,15 @@ module.exports = function (router) {
             index = 3;
         }
         else {
-            save_second_reply(_obj.content);
+            if (subindex1 == 0)
+                save_second_reply(_obj.content);
+            else if(subindex1 == 1){
+
+            }else if(subindex1 == 2){
+
+            }else if(subindex1 == 3){
+                setLocation1();
+            }
             console.log(_obj.content + " / " + "된당?");
         }
 
