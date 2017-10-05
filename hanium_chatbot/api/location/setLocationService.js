@@ -4,10 +4,11 @@
 var express = require("expres");
 var router = express.Router();
 
-module.exports = function (router,index) {
-    switch (index){
-        case 4:
-
+module.exports = function (router,name) {
+    switch (name){
+        case "강남구":
+            console.log("강남구");
             break;
+
     }
 }

@@ -14,7 +14,7 @@ var setImgCam1 = {};
 var setImgCam2 = {};
 var subindex1 = 0;
 var subIdxMap = new Map();
-
+var SetLocationService = require("./location/setLocationService");
 
 //var Camera = require("./service/camera");
 
@@ -204,8 +204,10 @@ module.exports = function (router) {
             /*
              GPS 정보 키면서 지도로 바로 연동
              */
-            console.log("현재 위치 정보 보내기 완료");
-            subindex1 = 3;
+            /*
+             두 번째 질문에서 버튼 클릭했을 때임!!
+             */
+            var setLocationService = new SetLocationService(router, reply);
 
         } else if (index == 3) {
             message2.uploadDest(reply, function (err, message) {
@@ -245,13 +247,6 @@ module.exports = function (router) {
         else {
             if (subindex1 == 0)
                 save_second_reply(_obj.content);
-            else if(subindex1 == 1){
-
-            }else if(subindex1 == 2){
-
-            }else if(subindex1 == 3){
-
-            }
             console.log(_obj.content + " / " + "된당?");
         }
 
