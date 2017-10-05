@@ -7,7 +7,7 @@ var router = express.Router();
 module.exports = function (router,name) {
     switch (name){
         case "강남구":
-            console.log("강남구");
+            console.log("강남구123123");
             break;
 
     }
