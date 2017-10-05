@@ -42,8 +42,8 @@ function setBtnGangNam() {
 module.exports = function (router,name) {
     switch (name){
         case "강남구":
-            console.log("호잇!");
            // setBtnGangNam();
+            console.log("강남구");
             break;
     }
 };
