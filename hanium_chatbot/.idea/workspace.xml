@@ -63,8 +63,8 @@
       <file leaf-file-name="res_message.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/res_message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1059">
-              <caret line="239" column="16" lean-forward="false" selection-start-line="239" selection-start-column="16" selection-end-line="239" selection-end-column="16" />
+            <state relative-caret-position="335">
+              <caret line="249" column="13" lean-forward="false" selection-start-line="249" selection-start-column="13" selection-end-line="249" selection-end-column="13" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -75,8 +75,8 @@
       <file leaf-file-name="setLocationService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/location/setLocationService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="253">
+              <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -143,6 +143,7 @@
     <findStrings>
       <find>npm start</find>
       <find>start</find>
+      <find>된당</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -180,8 +181,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="466" />
-    <option name="y" value="96" />
+    <option name="x" value="507" />
+    <option name="y" value="119" />
     <option name="width" value="1498" />
     <option name="height" value="1002" />
   </component>
@@ -457,12 +458,12 @@
       <workItem from="1506936871884" duration="1219000" />
       <workItem from="1506990619263" duration="20000" />
       <workItem from="1507027533915" duration="5102000" />
-      <workItem from="1507188888557" duration="5131000" />
+      <workItem from="1507188888557" duration="5778000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67126000" />
+    <option name="totallyTimeSpent" value="67773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -474,7 +475,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="466" y="96" width="1498" height="1002" extended-state="0" />
+    <frame x="507" y="119" width="1498" height="1002" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26373628" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -875,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/location/setLocationService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        <state relative-caret-position="253">
+          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
@@ -885,8 +886,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/res_message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1059">
-          <caret line="239" column="16" lean-forward="false" selection-start-line="239" selection-start-column="16" selection-end-line="239" selection-end-column="16" />
+        <state relative-caret-position="335">
+          <caret line="249" column="13" lean-forward="false" selection-start-line="249" selection-start-column="13" selection-end-line="249" selection-end-column="13" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>

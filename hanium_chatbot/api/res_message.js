@@ -200,7 +200,7 @@ module.exports = function (router) {
             /*
              두 번째 질문에서 버튼 클릭했을 때임!!
              */
-            var setLocationService = new SetLocationService(router, reply);
+            subindex1 = 3;
 
         } else if (index == 3) {
             message2.uploadDest(reply, function (err, message) {
@@ -238,9 +238,16 @@ module.exports = function (router) {
             index = 3;
         }
         else {
-            if (subindex1 == 0)
+            if (subindex1 == 0) {
                 save_second_reply(_obj.content);
-            console.log(_obj.content + " / " + "된당?");
+            }else if(subIndex1 == 1){
+
+            }else if(subindex1 == 2){
+
+            }
+            else if (subindex1 == 3) {
+                var setLocationService = new SetLocationService(router, _obj.content);
+            }
         }
 
         res.set({
