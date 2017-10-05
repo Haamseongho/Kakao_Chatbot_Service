@@ -171,7 +171,7 @@ module.exports = function (router) {
                 }
             }
         };
-    };
+   
 
 
     function save_second_reply(reply) {
@@ -259,5 +259,5 @@ module.exports = function (router) {
             'content-type': 'application/json'
         }).send(JSON.stringify(message));
     });
-};
+}
 
