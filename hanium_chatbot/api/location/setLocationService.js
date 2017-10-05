@@ -3,6 +3,7 @@
  */
 var express = require("expres");
 var router = express.Router();
+var message = {};
 
 function setBtnGangNam() {
     message = {
@@ -41,6 +42,5 @@ module.exports = function (router,name) {
         case "강남구":
             setBtnGangNam();
             break;
-
     }
-}
+};
