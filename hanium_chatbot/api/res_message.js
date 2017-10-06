@@ -1020,6 +1020,9 @@ module.exports = function (router) {
     function setAddressReply(subindex1,reply2) {
         sCode = subindex1+reply2;
         console.log(sCode);
+        /*
+        공공데이터 크롤링 시에 sCode를 스키마에 추가할 것 (구 : 번호 / 동 : 이름) == 구+번호 == sCode
+         */
     }
 
 
@@ -1212,7 +1215,6 @@ module.exports = function (router) {
                 if (err) return console.log("목적지 데이터 저장 실패");
                 else {
                     return console.log("목적지 데이터 저장 성공");
-                    subindex1 = 4;
                 }
             })
         }
