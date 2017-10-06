@@ -1214,7 +1214,7 @@ module.exports = function (router) {
             message2.uploadDest(reply, function (err, message) {
                 if (err) return console.log("목적지 데이터 저장 실패");
                 else {
-                    return res.render("map.ejs",{dest:message.dest});
+                    //return res.render("map.ejs",{dest:message.dest});
                 }
             })
         }
