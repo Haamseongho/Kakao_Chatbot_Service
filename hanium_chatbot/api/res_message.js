@@ -228,10 +228,11 @@ module.exports = function (router) {
             index = 1;
         }
         else if (_obj.content == "현재 위치에서 가야할 병원 검색") {
+            index = 2;
             console.log("두 번째 버튼 클릭");
             setLocation1();
             //hos_close_here();
-            index = 2;
+
         }
         else if (_obj.content == "가야할 곳에서 가까운 병원들") {
             console.log("세 번째 버튼 클릭");
