@@ -20,14 +20,16 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff35a43d7fceeb6a0ad00db5c3644b45"></script>
 <script>
     var geocoder = new daum.maps.services.Geocoder();
-
+/*
     var callback = function (status,result) {
         if(status == daum.maps.services.Status.OK){
             console.log(result);
         }
     }
+*/
     var destination = <%= dest %>
-    geocoder.addr2coord(destination,callback);
+    console.log(destination);
+   // geocoder.addr2coord(destination,callback);
 
     var container = document.getElementById('map');
     var options = {
