@@ -14,7 +14,6 @@ var setImgCam1 = {};
 var setImgCam2 = {};
 var subindex1 = 0;
 var subIdxMap = new Map();
-var SetLocationService = require("./location/setLocationService");
 
 //var Camera = require("./service/camera");
 
@@ -97,6 +96,7 @@ module.exports = function (router) {
             }
         };
         subindex1 = 3;
+	console.log('subindex1 값 ::' +subindex1);
     }
 
     function setBtnGangNam() {
@@ -200,9 +200,14 @@ module.exports = function (router) {
             /*
              두 번째 질문에서 버튼 클릭했을 때임!!
              */
-            console.log('index 값 : 2 ');
-            subindex1 = 3;
-
+	   switch(reply){              
+                case "강남구":{
+                     setBtnGangNam();
+                     break;
+                }
+                
+            }
+          //  var setLocationService = new SetLocationService(router,reply);
         } else if (index == 3) {
             message2.uploadDest(reply, function (err, message) {
                 if (err) return console.log("목적지 데이터 저장 실패");
@@ -224,33 +229,23 @@ module.exports = function (router) {
 
         if (_obj.content == "가야할 병원 분류를 선택") {
             console.log("첫 번째 버튼 클릭");
+	         index = 1;
             hurt_part_check();
-            index = 1;
         }
         else if (_obj.content == "현재 위치에서 가야할 병원 검색") {
             index = 2;
             console.log("두 번째 버튼 클릭");
             setLocation1();
             //hos_close_here();
-
         }
         else if (_obj.content == "가야할 곳에서 가까운 병원들") {
             console.log("세 번째 버튼 클릭");
-            hos_close_destination();
             index = 3;
+            hos_close_destination();
         }
         else {
-            if (subindex1 == 0) {
-                save_second_reply(_obj.content);
-            }else if(subIndex1 == 1){
-
-            }else if(subindex1 == 2){
-
-            }
-            else if (subindex1 == 3) {
-                console.log('subindex1 의 값 : 3 ' );
-                var setLocationService = new SetLocationService(router, _obj.content);
-            }
+            console.log('well??');
+            save_second_reply(_obj.content);
         }
 
         res.set({
