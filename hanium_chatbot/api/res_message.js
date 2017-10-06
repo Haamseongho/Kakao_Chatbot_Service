@@ -1017,11 +1017,11 @@ module.exports = function (router) {
         };
     };
 
-    function setAddressReply(subindex1,reply2) {
-        sCode = subindex1+reply2;
+    function setAddressReply(subindex1, reply2) {
+        sCode = subindex1 + reply2;
         console.log(sCode);
         /*
-        공공데이터 크롤링 시에 sCode를 스키마에 추가할 것 (구 : 번호 / 동 : 이름) == 구+번호 == sCode
+         공공데이터 크롤링 시에 sCode를 스키마에 추가할 것 (구 : 번호 / 동 : 이름) == 구+번호 == sCode
          */
     }
 
@@ -1214,7 +1214,7 @@ module.exports = function (router) {
             message2.uploadDest(reply, function (err, message) {
                 if (err) return console.log("목적지 데이터 저장 실패");
                 else {
-                    //return res.render("map.ejs",{dest:message.dest});
+                    //res.render('map.ejs', {dest: message.dest});
                 }
             })
         }
@@ -1247,11 +1247,11 @@ module.exports = function (router) {
         else {
             console.log('well??');
             if (subindex1 == 0) { // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
-                                  // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
-                                  // 동을 선택하도록 진행.
+                // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
+                // 동을 선택하도록 진행.
                 save_second_reply(_obj.content);
             } else {
-                setAddressReply(subindex1,_obj.content);
+                setAddressReply(subindex1, _obj.content);
             }
         }
 
