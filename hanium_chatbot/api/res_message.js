@@ -1020,11 +1020,18 @@ module.exports = function (router) {
     };
 
     function setAddressReply(reply2) {
-        if(subindex1 == 0){
-            console.log("Nothing to select..");
-        }
-        else if(subindex1 == 1){
-            console.log(reply2+"이 눌렸습니다.");
+        switch (subindex1) {
+            case 0: {
+                console.log("nothing to select");
+                break;
+            }
+            case 1: {
+                for (var i = 0; i < message.buttons.size; i++) {
+                    if (reply2 == message.buttons[i]) {
+                        console.log(message.buttons[i] + "는" + reply2 + "와 같습니다.");
+                    }
+                }
+            }
         }
     }
 
@@ -1071,145 +1078,145 @@ module.exports = function (router) {
                 }
 
                 case "강동구": {
+                    subindex1 = 2;
                     setBtnGangDong();
-                    locNum = 12;
                     break;
                 }
 
                 case "강북구": {
+                    subindex1 = 3;
                     setBtnGangBuk();
-                    locNum = 13;
                     break;
                 }
 
                 case "강서구": {
+                    subindex1 = 4;
                     setBtnGangSeo();
-                    locNum = 14;
                     break;
                 }
 
                 case "관악구": {
+                    subindex1 = 5;
                     setBtnGwanAk();
-                    locNum = 15;
                     break;
                 }
 
                 case "광진구": {
+                    subindex1 = 6;
                     setBtnGwangJin();
-                    locNum = 16;
                     break;
                 }
 
                 case "구로구": {
+                    subindex1 = 7;
                     setBtnGuro();
-                    locNum = 17;
                     break;
                 }
 
                 case "금천구": {
+                    subindex1 = 8;
                     setBtnGeumChun();
-                    locNum = 18;
                     break;
                 }
 
                 case "노원구": {
+                    subindex1 = 9;
                     setBtnNoWon();
-                    locNum = 19;
                     break;
                 }
 
                 case "도봉구": {
+                    subindex1 = 10;
                     setBtnDoBong();
-                    locNum = 20;
                     break;
                 }
 
                 case "동대문구": {
+                    subindex1 = 11;
                     setBtnDongDaeMun();
-                    locNum = 21;
                     break;
                 }
 
                 case "동작구": {
+                    subindex1 = 12;
                     setBtnDongJak();
-                    locNum = 22;
                     break;
                 }
 
                 case "마포구": {
+                    subindex1 = 13;
                     setBtnMaPo();
-                    locNum = 23;
                     break;
                 }
 
                 case "서대문구": {
+                    subindex1 = 14;
                     setBtnSeoDaeMun();
-                    locNum = 24;
                     break;
                 }
 
                 case "서초구": {
+                    subindex1 = 15;
                     setBtnSeoCho();
-                    locNum = 25;
                     break;
                 }
 
                 case "성동구": {
+                    subindex1 = 16;
                     setBtnSeongDong();
-                    locNum = 26;
                     break;
                 }
 
                 case "성북구": {
+                    subindex1 = 17;
                     setBtnSeongBuk();
-                    locNum = 27;
                     break;
                 }
 
                 case "송파구": {
+                    subindex1 = 18;
                     setBtnSongPa();
-                    locNum = 28;
                     break;
                 }
 
                 case "양천구": {
+                    subindex1 = 19;
                     setBtnYangChun();
-                    locNum = 29;
                     break;
                 }
 
                 case "영등포구": {
+                    subindex1 = 20;
                     setBtnYeongDeungPo();
-                    locNum = 30;
                     break;
                 }
 
                 case "용산구": {
+                    subindex1 = 21;
                     setBtnYongSan();
-                    locNum = 31;
                     break;
                 }
 
                 case "은평구": {
+                    subindex1 = 22;
                     setBtnEunPyeong();
-                    locNum = 32;
                     break;
                 }
                 case "종로구": {
+                    subindex1 = 23;
                     setBtnJongRo();
-                    locNum = 33;
                     break;
                 }
 
                 case "중구": {
+                    subindex1 = 24;
                     setBtnJoongGu();
-                    locNum = 34;
                     break;
                 }
 
                 case "중랑구": {
+                    subindex1 = 25;
                     setBtnJoongRang();
-                    locNum = 35;
                     break;
                 }
             }
