@@ -3,6 +3,7 @@
  */
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+
 var messageSchema = new Schema({
     part : { type:String , default: "" },
     dest: { type:String , default: "" }
@@ -18,6 +19,9 @@ messageSchema.methods.uploadDest = function(dest,cb) {
     console.log("데이터 저장2");
     this.model("Message").collection.insert({dest:dest},cb);
 };
+
+messageSchema.methods.addrToLatLng = function (dest,cb) {
+}
 var Message = mongoose.model("Message",messageSchema);
 
 module.exports = Message;
