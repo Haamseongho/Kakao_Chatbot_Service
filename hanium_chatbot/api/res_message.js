@@ -14,7 +14,7 @@ var setImgCam1 = {};
 var setImgCam2 = {};
 var subindex1 = 0;
 var subIdxMap = new Map();
-var locNum = 0;
+var sCode = "";
 //var Camera = require("./service/camera");
 
 
@@ -1018,16 +1018,9 @@ module.exports = function (router) {
     };
 
     function setAddressReply(subindex1,reply2) {
-        switch (subindex1) {
-            case 0: {
-                console.log("nothing to select");
-                break;
-            }
-            case 1: { // 강남구
-                console.log("강남구 코드 번호 : "+ subindex1 + "동은 " + reply2);
-                break;
-            }
-        }
+        sCode = subindex1+reply2;
+        console.log(sCode);
+    }
 
 
     function save_second_reply(reply) {
