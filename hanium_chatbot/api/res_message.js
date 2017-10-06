@@ -95,8 +95,6 @@ module.exports = function (router) {
                 ]
             }
         };
-        subindex1 = 3;
-        console.log('subindex1 값 ::' + subindex1);
     }
 
     function setBtnGangNam() {
@@ -1019,16 +1017,15 @@ module.exports = function (router) {
         };
     };
 
-    function setAddressReply(reply2) {
+    function setAddressReply(subindex1,reply2) {
         switch (subindex1) {
             case 0: {
                 console.log("nothing to select");
                 break;
             }
-            case 1: {
-                console.log(reply2+"... buttons 왜 안먹혀"); 
+            case 1: { // 강남구
+                console.log("강남구 코드 번호 : "+ subindex1 + "동은 " + reply2);
                 break;
-		 }
             }
         }
 
@@ -1066,7 +1063,6 @@ module.exports = function (router) {
             /*
              두 번째 질문에서 버튼 클릭했을 때임!!
              */
-            console.log(reply);
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
@@ -1255,8 +1251,13 @@ module.exports = function (router) {
         }
         else {
             console.log('well??');
-            save_second_reply(_obj.content);
-            setAddressReply(_obj.content);
+            if (subindex1 == 0) { // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
+                                  // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
+                                  // 동을 선택하도록 진행.
+                save_second_reply(_obj.content);
+            } else {
+                setAddressReply(subindex1,_obj.content);
+            }
         }
 
         res.set({
