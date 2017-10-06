@@ -1062,6 +1062,7 @@ module.exports = function (router) {
             /*
              두 번째 질문에서 버튼 클릭했을 때임!!
              */
+            console.log(reply);
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
@@ -1252,8 +1253,6 @@ module.exports = function (router) {
             console.log('well??');
             save_second_reply(_obj.content);
             setAddressReply(_obj.content);
-
-            setBtnGangNam(_obj.content);
         }
 
         res.set({
