@@ -1026,14 +1026,11 @@ module.exports = function (router) {
                 break;
             }
             case 1: {
-                for (var i = 0; i < message.buttons.size; i++) {
-                    if (reply2 == message.buttons[i]) {
-                        console.log(message.buttons[i] + "는" + reply2 + "와 같습니다.");
-                    }
-                }
+                console.log(reply2+"... buttons 왜 안먹혀"); 
+                break;
+		 }
             }
         }
-    }
 
 
     function save_second_reply(reply) {
@@ -1267,4 +1264,3 @@ module.exports = function (router) {
         }).send(JSON.stringify(message));
     });
 };
-
