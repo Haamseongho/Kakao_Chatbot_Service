@@ -4,7 +4,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../database/db");
-var db_connect = new db(router);
+//var db_connect = new db(router);
 var Keyboard = require("../api/keyboard");
 var ResMessage = require("../api/res_message");
 

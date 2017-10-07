@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>위치 정보 체크(현재)</title>
+     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"
+            data-do-not-move="true" data-provides="jQuery">
+    </script>
+    
+</head>
+<body>
+
+<div id="map" style="widht:1000px;height:2000px"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff35a43d7fceeb6a0ad00db5c3644b45"></script>
+<script>
+    var geocoder = new daum.maps.services.Geocoder();
+/*
+    var callback = function (status,result) {
+        if(status == daum.maps.services.Status.OK){
+            console.log(result);
+        }
+    }
+*/
+    var destination = <%= dest %>
+    console.log(destination);
+   // geocoder.addr2coord(destination,callback);
+
+    var container = document.getElementById('map');
+    var options = {
+        center: new daum.maps.LatLng(33.450701, 126.570667),
+        level: 3
+    };
+
+    var map = new daum.maps.Map(container, options);
+    
+
+    
+</script>
+
+</body>
+</html>

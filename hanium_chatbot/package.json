@@ -6,14 +6,21 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "assert": "^1.4.1",
+    "async": "^2.5.0",
     "body-parser": "~1.16.0",
+    "buffertools": "^2.1.6",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
+    "file-on-write": "^1.1.1",
+    "mjpeg-camera": "^1.7.2",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.8",
     "morgan": "~1.7.0",
+    "mpromise": "^0.5.5",
+    "request": "^2.81.0",
     "serve-favicon": "~2.3.2"
   }
 }
