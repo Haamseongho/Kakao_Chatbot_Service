@@ -13,6 +13,7 @@ var mapNum1 = new Map();
 var setImgCam1 = {};
 var setImgCam2 = {};
 var subindex1 = 0;
+var subindex2 = 0;
 var subIdxMap = new Map();
 var sCode = "";
 
@@ -1038,6 +1039,11 @@ module.exports = function (router) {
     function setAddressReply(subindex1, reply2) {
         sCode = subindex1 + reply2;
         console.log(sCode);
+        if(subindex2 == 1){
+            hurt_part_select(reply2);
+            // 아픈 부위 선택할 경우
+        }
+
         /*
          공공데이터 크롤링 시에 sCode를 스키마에 추가할 것 (구 : 번호 / 동 : 이름) == 구+번호 == sCode
          */
@@ -1050,7 +1056,7 @@ module.exports = function (router) {
 
         if (index == 1) {
             if(reply == "아픈 부위 선택 하기"){
-                hurt_part_select(reply);
+               subindex2 = 1;
             }
             /*
              message2.uploadPart(reply, function (err, message) {
@@ -1083,7 +1089,6 @@ module.exports = function (router) {
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
-
                     setBtnGangNam();
                     break;
                 }
