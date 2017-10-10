@@ -54,7 +54,7 @@ module.exports = function (router) {
         mapNum1.set(setImgCam1, message.keyboard.buttons[0]);
     };
 
-    function hurt_part_select(part){
+    function hurt_part_select(part) {
         message = {
             "message": {
                 "text": "아픈 부위를 선택해주세요"
@@ -1014,7 +1014,6 @@ module.exports = function (router) {
     }
 
 
-
     function sendLocNowInfo() {
         message = {
             "message": {
@@ -1039,10 +1038,6 @@ module.exports = function (router) {
     function setAddressReply(subindex1, reply2) {
         sCode = subindex1 + reply2;
         console.log(sCode);
-        if(subindex2 == 1){
-            hurt_part_select(reply2);
-            // 아픈 부위 선택할 경우
-        }
 
         /*
          공공데이터 크롤링 시에 sCode를 스키마에 추가할 것 (구 : 번호 / 동 : 이름) == 구+번호 == sCode
@@ -1052,11 +1047,15 @@ module.exports = function (router) {
 
     function save_second_reply(reply) {
         console.log("되낭?");
+        console.log(reply + "22");
         var message2 = new MessageDB();
 
         if (index == 1) {
-            if(reply == "아픈 부위 선택 하기"){
-               subindex2 = 1;
+            if (reply == "직접 촬영하여 아픈 부위 알리기") {
+                subindex2 = 1;
+            }
+            else if (reply == "아픈 부위 선택 하기") {
+                subindex2 = 2;
             }
             /*
              message2.uploadPart(reply, function (err, message) {
@@ -1237,7 +1236,7 @@ module.exports = function (router) {
                 }
             }
             //  var setLocationService = new SetLocationService(router,reply);
-        } else{
+        } else {
             // nothing
         }
     }
@@ -1268,7 +1267,15 @@ module.exports = function (router) {
                 // 동을 선택하도록 진행.
                 save_second_reply(_obj.content);
             } else {
-                setAddressReply(subindex1, _obj.content);
+                if (subindex2 == 1) {
+                    // 카메라 촬영
+                } else if (subindex2 == 2) {
+                    hurt_part_select(_obj.content);
+                    // 아픈 부위 선택
+                }
+                else if (subindex2 == 3) {
+                    setAddressReply(subindex1, _obj.content);
+                }
             }
         }
 
