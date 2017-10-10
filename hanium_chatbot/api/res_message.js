@@ -45,15 +45,43 @@ module.exports = function (router) {
                      병원 분류해서 15개로 추려서 정리할 것
                      */
                     "직접 촬영하여 아픈 부위 알리기",
-                    "대표 이미지로 아픈 부위 알리기"
+                    "아픈 부위 선택 하기"
                 ]
             }
         };
 
         mapNum1.set(setImgCam1, message.keyboard.buttons[0]);
-        mapNum1.set(setImgCam2, message.keyboard.buttons[1]);
-
     };
+
+    function hurt_part_select(part){
+        message = {
+            "message": {
+                "text": "아픈 부위를 선택해주세요"
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    /*
+                     병원 분류해서 15개로 추려서 정리할 것
+                     */
+                    "목",
+                    "코",
+                    "눈",
+                    "심장",
+                    "허리",
+                    "팔목",
+                    "발목",
+                    "기관지",
+                    "배",
+                    "머리",
+                    "위",
+                    "간",
+                    "장",
+                    "주요부위"
+                ]
+            }
+        };
+    }
 
     function hos_close_here() {
         /*
@@ -984,20 +1012,7 @@ module.exports = function (router) {
         };
     }
 
-    function hos_close_destination() {
-        /*
-         가야할 곳을 입력한다 - text => 주소로 입력될 경우 이를 GeoCoding을 통하여 위도/경도로 변경한 뒤 DB 내의 병원 정보와 비교
-         이 후에 가까운 곳의 병원 리스트를 가지고 온다.
-         */
-        message = {
-            "message": {
-                "text": "가야할 곳 / 목적지를 적어주세요"
-            },
-            "keyboard": {
-                "type": "text"
-            }
-        }
-    }
+
 
     function sendLocNowInfo() {
         message = {
@@ -1034,6 +1049,9 @@ module.exports = function (router) {
         var message2 = new MessageDB();
 
         if (index == 1) {
+            if(reply == "아픈 부위 선택 하기"){
+                hurt_part_select(reply);
+            }
             /*
              message2.uploadPart(reply, function (err, message) {
              if (err) return console.log("부위 별 데이터 저장 실패");
@@ -1214,13 +1232,8 @@ module.exports = function (router) {
                 }
             }
             //  var setLocationService = new SetLocationService(router,reply);
-        } else if (index == 3) {
-            message2.uploadDest(reply, function (err, message) {
-                if (err) return console.log("목적지 데이터 저장 실패");
-                else {
-                    console.log('목적지 데이터 저장 성공');
-                }
-            })
+        } else{
+            // nothing
         }
     }
 
@@ -1237,16 +1250,11 @@ module.exports = function (router) {
             index = 1;
             hurt_part_check();
         }
-        else if (_obj.content == "현재 위치에서 가야할 병원 검색") {
+        else if (_obj.content == "가까운 병원 찾아가기") {
             index = 2;
             console.log("두 번째 버튼 클릭");
             setLocation1();
             //hos_close_here();
-        }
-        else if (_obj.content == "가야할 곳에서 가까운 병원들") {
-            console.log("세 번째 버튼 클릭");
-            index = 3;
-            hos_close_destination();
         }
         else {
             console.log('well??');
