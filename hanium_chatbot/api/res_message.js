@@ -15,10 +15,13 @@ var setImgCam2 = {};
 var subindex1 = 0;
 var subIdxMap = new Map();
 var sCode = "";
+
 //var Camera = require("./service/camera");
 
 
 module.exports = function (router) {
+
+// database connection
 
     var checkUserKey = (req, res, next) => {
         if (req.body.user_key != undefined) {
@@ -1215,7 +1218,7 @@ module.exports = function (router) {
             message2.uploadDest(reply, function (err, message) {
                 if (err) return console.log("목적지 데이터 저장 실패");
                 else {
-                    //res.render('map.ejs', {dest: message.dest});
+                    console.log('목적지 데이터 저장 성공');
                 }
             })
         }

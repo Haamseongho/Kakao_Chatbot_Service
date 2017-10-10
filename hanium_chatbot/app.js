@@ -11,14 +11,35 @@ var users = require('./routes/users');
 var chatbot = require("./routes/chatbot");
 
 var port = process.env.PORT || 2721;
-var dbUrl = "mongodb://hanium_frontier:123123@ds161630.mlab.com:61630/hanium_frontier";
-var MongoClient = require("mongodb").MongoClient;
+//var dbUrl = "mongodb://hanium_frontier:123123@ds161630.mlab.com:61630/hanium_frontier";
+//var MongoClient = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
 
 var app = express();
 
 var test = require("./routes/test");
 var map = require("./routes/map");
+
+// db
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+    host : 'helpdb.crqysrfu2n53.ap-northeast-2.rds.amazonaws.com',
+    user : 'haams',
+    password : 'abc123qw',
+    database : 'helpDB',
+    port : 3306,
+    version : 1.0
+});
+
+
+connection.connect(function(err){
+   if(err) throw err;
+   else{
+	console.log('db is connected well! - mysql');
+   }
+});
+
+
 /*
   MongoClient.connect(dbUrl,function (err) {
         if(err) console.log("db is not connected");
@@ -27,14 +48,14 @@ var map = require("./routes/map");
         }
     });
 */
-
+/*
 mongoose.connect(dbUrl, function (err) {
     if (err) {
         return console.log("There is no database");
     }
     console.log("Database is connected well!");
 });
-
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
