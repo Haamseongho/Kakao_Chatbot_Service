@@ -54,7 +54,7 @@ module.exports = function (router) {
         mapNum1.set(setImgCam1, message.keyboard.buttons[0]);
     };
 
-    function hurt_part_select(part) {
+    function hurt_part_select() {
         message = {
             "message": {
                 "text": "아픈 부위를 선택해주세요"
@@ -83,6 +83,14 @@ module.exports = function (router) {
             }
         };
     }
+
+    function hurt_part_select_db_check(part){
+	console.log(part +"부위 다침");
+    }
+
+    function camera_connection(){
+	// 카메라 연동!! 
+    } 
 
     function hos_close_here() {
         /*
@@ -1052,31 +1060,18 @@ module.exports = function (router) {
 
         if (index == 1) {
             if (reply == "직접 촬영하여 아픈 부위 알리기") {
+                 // 두 번째 질문과 겹치지 않게 하기 위함.
                 subindex2 = 1;
+                subindex1 = 26;
+		camera_connection();
             }
             else if (reply == "아픈 부위 선택 하기") {
                 subindex2 = 2;
+                subindex1 = 27;
+                hurt_part_select(); 
             }
-            /*
-             message2.uploadPart(reply, function (err, message) {
-             if (err) return console.log("부위 별 데이터 저장 실패");
-             else {
-             return console.log("부위 별 데이터 저장 성공");
-             index = 4;
-             }
-             });
-             */
-            // reply --> 직접 촬영하여 아픈 부위 알리기 / 대표 이미지로 아픈 부위 알리기
-            if (reply == mapNum1.get(setImgCam1)) {
-                //               var camera = new Camera(router);
+           
 
-                // 카메라 연동 확인하기.
-
-            } else if (reply == mapNum1.get(setImgCam2)) {
-
-            } else {
-                // Nothing to show..
-            }
 
         } else if (index == 2) {
             /*
@@ -1261,17 +1256,19 @@ module.exports = function (router) {
             //hos_close_here();
         }
         else {
-            console.log('well??');
+            console.log('subindex1 : '+subindex1);
             if (subindex1 == 0) { // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
                 // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
                 // 동을 선택하도록 진행.
                 save_second_reply(_obj.content);
             } else {
+                console.log(subindex2+'선택의 시간');
                 if (subindex2 == 1) {
+                    // camera 연동 함수 
                     // 카메라 촬영
                 } else if (subindex2 == 2) {
-                    hurt_part_select(_obj.content);
-                    // 아픈 부위 선택
+		//    hurt_part_select(_obj.content);
+                     hurt_part_select_db_check(_obj.content);
                 }
                 else if (subindex2 == 3) {
                     setAddressReply(subindex1, _obj.content);
