@@ -20,6 +20,7 @@
     "mongoose": "^4.11.8",
     "morgan": "~1.7.0",
     "mpromise": "^0.5.5",
+    "mysql": "^2.15.0",
     "request": "^2.81.0",
     "serve-favicon": "~2.3.2"
   }
