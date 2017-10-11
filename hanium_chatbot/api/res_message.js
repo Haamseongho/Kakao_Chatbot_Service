@@ -12,9 +12,9 @@ var assert = require("assert");
 var mapNum1 = new Map();
 var setImgCam1 = {};
 var setImgCam2 = {};
-let subindex1 = 0;
-let subindex2 = 0;
-let subindex3 = 0;
+var subindex1 = 0;
+var subindex2 = 0;
+var subindex3 = 0;
 
 
 var subIdxMap = new Map();
@@ -1290,18 +1290,19 @@ module.exports = function (router) {
                 save_second_reply(_obj.content);
             } else {
                 console.log(subindex2 + '선택의 시간');
+                /*
+                 if(subindex2 == 0){
 
-                if(subindex2 == 0){
-                    
-                }
-                if (subindex2 == 1) {
-                    check_vision_byAI(_obj.content);
-                } else if (subindex2 == 2) {
-                    hurt_part_select_db_check(_obj.content);
-                }
-                else if (subindex2 == 3) {
-                    setAddressReply(subindex1, _obj.content);
-                }
+                 }
+                 if (subindex2 == 1) {
+                 check_vision_byAI(_obj.content);
+                 } else if (subindex2 == 2) {
+                 hurt_part_select_db_check(_obj.content);
+                 }
+                 else if (subindex2 == 3) {
+                 setAddressReply(subindex1, _obj.content);
+                 }
+                 */
             }
         }
 
