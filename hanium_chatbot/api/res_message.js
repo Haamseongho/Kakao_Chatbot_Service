@@ -14,6 +14,9 @@ var setImgCam1 = {};
 var setImgCam2 = {};
 var subindex1 = 0;
 var subindex2 = 0;
+var subindex3 = 0;
+
+
 var subIdxMap = new Map();
 var sCode = "";
 var NodeWebCam = require("node-webcam");
@@ -47,7 +50,7 @@ module.exports = function (router) {
                     /*
                      병원 분류해서 15개로 추려서 정리할 것
                      */
-                    "직접 촬영하여 아픈 부위 알리기",
+                    "사진으로 아픈 부위 알리기",
                     "아픈 부위 선택 하기"
                 ]
             }
@@ -84,15 +87,14 @@ module.exports = function (router) {
                 ]
             }
         };
+        subindex3 = 2;
     }
 
-    function hurt_part_select_db_check(part){
-	console.log(part +"부위 다침");
+    function hurt_part_select_db_check(part) {
+        console.log(part + "부위 다침");
+        /*
+        SQL 서버에서 쿼리문을 통해서 부위에 맞게 덴덴         */
     }
-
-    function camera_connection(){
-	// 카메라 연동!! 
-    } 
 
     function hos_close_here() {
         /*
@@ -100,44 +102,25 @@ module.exports = function (router) {
          */
         sendLocNowInfo();
     }
+
 // 카메라 연동
-    function cam_record_connection(reply) {
-        var opts = {
-            width : 1280 ,
-            height: 720,
-            quality : 100,
-            delay : 0,
-            saveShots : true,
-            output : "jpeg",
-            device : false,
-            callbackReturn : "location",
-            verbose : false
-        };
-        
-        var WebCam = NodeWebCam.create(opts);
-        WebCam.capture("test_picture",function (err,data) {
-            if(err) throw err;
-            else{
-                console.log(data);
+    function cam_record_connection() {
+        message = {
+            "message": {
+                "text": "보여질 부위 사진을 보내주세요"
+            },
+            "keyboard": {
+                "type": "text"
             }
-        });
-        
-        NodeWebCam.caputre("test_picture",opts,function (err,data) {
-            if(err) throw err;
-            else{
-                console.log(data);
-            }
-        });
-        WebCam.list(function (list) {
-            var anotherCam = NodeWebCam.create({ device : list[0]});
-        });
-        var opts = {
-            callbackReturn:"base64"
         };
-        NodeWebCam.capture("test_picture",opts,function (err,data) {
-            var image = "<img src='" +data +"'>";
-            console.log(image);
-        })
+        subindex3 = 1;
+    }
+
+    function check_vision_byAI(reply) {
+        console.log(reply);
+        /*
+         google -> vision.api & tensorflow 적용해서 부위 불러오기.
+         */
     }
 
     function setLocation1() { // 구
@@ -1100,20 +1083,17 @@ module.exports = function (router) {
         var message2 = new MessageDB();
 
         if (index == 1) {
-            if (reply == "직접 촬영하여 아픈 부위 알리기") {
-                 // 두 번째 질문과 겹치지 않게 하기 위함.
+            if (reply == "사진으로 아픈 부위 알리기") {
+                // 두 번째 질문과 겹치지 않게 하기 위함.
                 subindex2 = 1;
                 subindex1 = 26;
-		camera_connection();
+                cam_record_connection();
             }
             else if (reply == "아픈 부위 선택 하기") {
                 subindex2 = 2;
                 subindex1 = 27;
-                hurt_part_select(); 
+                hurt_part_select();
             }
-           
-
-
         } else if (index == 2) {
             /*
              GPS 정보 키면서 지도로 바로 연동
@@ -1297,20 +1277,24 @@ module.exports = function (router) {
             //hos_close_here();
         }
         else {
-            console.log('subindex1 : '+subindex1);
+            console.log('subindex1 : ' + subindex1);
             if (subindex1 == 0) { // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
                 // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
                 // 동을 선택하도록 진행.
                 save_second_reply(_obj.content);
             } else {
-                console.log(subindex2+'선택의 시간');
+                console.log(subindex2 + '선택의 시간');
                 if (subindex2 == 1) {
-                    cam_record_connection(_obj.content);
+
                     // camera 연동 함수 
                     // 카메라 촬영
+                    if (subindex3 == 1) {
+                        check_vision_byAI(_obj.content);
+                    }
                 } else if (subindex2 == 2) {
-		//    hurt_part_select(_obj.content);
-                     hurt_part_select_db_check(_obj.content);
+                    if (subindex3 == 2) {
+                        hurt_part_select_db_check(_obj.content);
+                    }
                 }
                 else if (subindex2 == 3) {
                     setAddressReply(subindex1, _obj.content);
