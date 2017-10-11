@@ -23,7 +23,6 @@ var NodeWebCam = require("node-webcam");
 var sgguMap = new Map();
 
 
-
 //var Camera = require("./service/camera");
 
 
@@ -116,20 +115,6 @@ module.exports = function (router) {
         };
     }
 
-    function check_vision_byAI(reply) {
-        console.log(reply);
-        message = {
-            "message": {
-                "text": "확인 중 입니다. 잠시만 기다려주세요."
-            },
-            "keyboard": {
-                "type": "text"
-            }
-        };
-        /*
-         google -> vision.api & tensorflow 적용해서 부위 불러오기.
-         */
-    }
 
     function setLocation1() { // 구
         message = {
@@ -1091,7 +1076,7 @@ module.exports = function (router) {
         if (index == 1) {
             if (reply == "사진으로 아픈 부위 알리기") {
                 // 두 번째 질문과 겹치지 않게 하기 위함.
-                index = 3; 
+                index = 3;
                 cam_record_connection();
             }
             else if (reply == "아픈 부위 선택 하기") {
@@ -1103,195 +1088,236 @@ module.exports = function (router) {
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
-                    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGangNam();
                     break;
                 }
 
                 case "강동구": {
                     subindex1 = 2;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGangDong();
                     break;
                 }
 
                 case "강북구": {
                     subindex1 = 3;
- 		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGangBuk();
                     break;
                 }
 
                 case "강서구": {
                     subindex1 = 4;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGangSeo();
                     break;
                 }
 
                 case "관악구": {
                     subindex1 = 5;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGwanAk();
                     break;
                 }
 
                 case "광진구": {
                     subindex1 = 6;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGwangJin();
                     break;
                 }
 
                 case "구로구": {
                     subindex1 = 7;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGuro();
                     break;
                 }
 
                 case "금천구": {
                     subindex1 = 8;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnGeumChun();
                     break;
                 }
 
                 case "노원구": {
                     subindex1 = 9;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnNoWon();
                     break;
                 }
 
                 case "도봉구": {
                     subindex1 = 10;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnDoBong();
                     break;
                 }
 
                 case "동대문구": {
                     subindex1 = 11;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnDongDaeMun();
                     break;
                 }
 
                 case "동작구": {
                     subindex1 = 12;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnDongJak();
                     break;
                 }
 
                 case "마포구": {
                     subindex1 = 13;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnMaPo();
                     break;
                 }
 
                 case "서대문구": {
                     subindex1 = 14;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnSeoDaeMun();
                     break;
                 }
 
                 case "서초구": {
                     subindex1 = 15;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnSeoCho();
                     break;
                 }
 
                 case "성동구": {
                     subindex1 = 16;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnSeongDong();
                     break;
                 }
 
                 case "성북구": {
                     subindex1 = 17;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnSeongBuk();
                     break;
                 }
 
                 case "송파구": {
                     subindex1 = 18;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnSongPa();
                     break;
                 }
 
                 case "양천구": {
                     subindex1 = 19;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnYangChun();
                     break;
                 }
 
                 case "영등포구": {
                     subindex1 = 20;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnYeongDeungPo();
                     break;
                 }
 
                 case "용산구": {
                     subindex1 = 21;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnYongSan();
                     break;
                 }
 
                 case "은평구": {
                     subindex1 = 22;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnEunPyeong();
                     break;
                 }
                 case "종로구": {
                     subindex1 = 23;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnJongRo();
                     break;
                 }
 
                 case "중구": {
                     subindex1 = 24;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnJoongGu();
                     break;
                 }
 
                 case "중랑구": {
                     subindex1 = 25;
-		    sgguMap.set(subindex1,reply);
+                    sgguMap.set(subindex1, reply);
                     setBtnJoongRang();
                     break;
                 }
-           } 
+            }
             //  var setLocationService = new SetLocationService(router,reply);
-        } else if(index == 3){
-		recognition_pic(reply);
-        } else if(index ==4){
-                recognition_part(reply);
+        } else if (index == 3) {
+            recognition_pic(reply);
+        } else if (index == 4) {
+            recognition_part(reply);
         } else {
-                console.log("구 : " + sgguMap.get(subindex1)  + "동 :" +reply);
-       }
+            console.log("구 : " + sgguMap.get(subindex1) + "동 :" + reply);
+        }
     }
 
-    function recognition_pic(pic){
-	console.log(pic +"사진 경로 입니다.");
+    function recognition_pic(pic) {
+        console.log(pic + "사진 경로 입니다.");
+        message = {
+            "message": {
+                "text": "확인 중 입니다. 잠시만 기다려주세요."
+            },
+            "keyboard": {
+                "type": "text"
+            }
+        };
+        /*
+         pic .. 사진 경로임 . 이거 가지고 분석 진행!!
+         */
+        analyze_pictures(pic);
     }
-   
-    function recognition_part(part){
-	console.log(part +"입니다.");
-    } 
+
+    function analyze_pictures(pic) {
+        const Vision = require("@google-cloud/vision");
+        const vision = Vision();
+        const fileName = pic;
+        const request = {
+            source: {
+                filename: fileName
+            }
+        };
+        vision.labelDetection(request).then((results) => {
+            const labels = results[0].labelAnnotations;
+            console.log('Labels:');
+            labels.forEach((label) => console.log(label.description));
+        }).catch((err) => {
+            console.error('Error : ', err);
+        });
+    }
+
+    function recognition_part(part) {
+        console.log(part + "입니다.");
+        message = {
+            "message": {
+                "text": "선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요."
+            },
+            "keyboard": {
+                "type": "text"
+            }
+        };
+        /*
+         part 가지고 비교해주기..
+         */
+    }
 
 
     router.post("/message", checkUserKey, function (req, res) {
@@ -1314,13 +1340,13 @@ module.exports = function (router) {
         }
         else {
             console.log('subindex1 : ' + subindex1);
-            
+
             // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
-                // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
-                // 동을 선택하도록 진행.
-            save_second_reply(_obj.content); 
-           }
-    
+            // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
+            // 동을 선택하도록 진행.
+            save_second_reply(_obj.content);
+        }
+
         res.set({
             'content-type': 'application/json'
         }).send(JSON.stringify(message));
