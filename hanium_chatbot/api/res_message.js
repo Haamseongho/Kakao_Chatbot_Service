@@ -16,6 +16,8 @@ var subindex1 = 0;
 var subindex2 = 0;
 var subIdxMap = new Map();
 var sCode = "";
+var NodeWebCam = require("node-webcam");
+
 
 //var Camera = require("./service/camera");
 
@@ -89,6 +91,45 @@ module.exports = function (router) {
          구로 나누기 / 동으로 나누기
          */
         sendLocNowInfo();
+    }
+// 카메라 연동
+    function cam_record_connection(reply) {
+        var opts = {
+            width : 1280 ,
+            height: 720,
+            quality : 100,
+            delay : 0,
+            saveShots : true,
+            output : "jpeg",
+            device : false,
+            callbackReturn : "location",
+            verbose : false
+        };
+        
+        var WebCam = NodeWebCam.create(opts);
+        WebCam.capture("test_picture",function (err,data) {
+            if(err) throw err;
+            else{
+                console.log(data);
+            }
+        });
+        
+        NodeWebCam.caputre("test_picture",opts,function (err,data) {
+            if(err) throw err;
+            else{
+                console.log(data);
+            }
+        });
+        WebCam.list(function (list) {
+            var anotherCam = NodeWebCam.create({ device : list[0]});
+        });
+        var opts = {
+            callbackReturn:"base64"
+        };
+        NodeWebCam.capture("test_picture",opts,function (err,data) {
+            var image = "<img src='" +data +"'>";
+            console.log(image);
+        })
     }
 
     function setLocation1() { // 구
@@ -1268,7 +1309,7 @@ module.exports = function (router) {
                 save_second_reply(_obj.content);
             } else {
                 if (subindex2 == 1) {
-                    // 카메라 촬영
+                    cam_record_connection(_obj.content);
                 } else if (subindex2 == 2) {
                     hurt_part_select(_obj.content);
                     // 아픈 부위 선택
