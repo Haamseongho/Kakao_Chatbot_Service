@@ -87,13 +87,12 @@ module.exports = function (router) {
                 ]
             }
         };
-        subindex3 = 2;
     }
 
     function hurt_part_select_db_check(part) {
         console.log(part + "부위 다침");
         /*
-        SQL 서버에서 쿼리문을 통해서 부위에 맞게 덴덴         */
+         SQL 서버에서 쿼리문을 통해서 부위에 맞게 덴덴         */
     }
 
     function hos_close_here() {
@@ -113,11 +112,18 @@ module.exports = function (router) {
                 "type": "text"
             }
         };
-        subindex3 = 1;
     }
 
     function check_vision_byAI(reply) {
         console.log(reply);
+        message = {
+            "message": {
+                "text": "확인 중 입니다. 잠시만 기다려주세요."
+            },
+            "keyboard": {
+                "type": "text"
+            }
+        };
         /*
          google -> vision.api & tensorflow 적용해서 부위 불러오기.
          */
@@ -1288,13 +1294,10 @@ module.exports = function (router) {
 
                     // camera 연동 함수 
                     // 카메라 촬영
-                    if (subindex3 == 1) {
-                        check_vision_byAI(_obj.content);
-                    }
+                    check_vision_byAI(_obj.content);
+
                 } else if (subindex2 == 2) {
-                    if (subindex3 == 2) {
-                        hurt_part_select_db_check(_obj.content);
-                    }
+                    hurt_part_select_db_check(_obj.content);
                 }
                 else if (subindex2 == 3) {
                     setAddressReply(subindex1, _obj.content);
