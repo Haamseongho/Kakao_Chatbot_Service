@@ -1280,49 +1280,52 @@ module.exports = function (router) {
             find_hos_location(sgguMap.get(subindex1), reply);
             console.log("구 : " + sgguMap.get(subindex1) + "동 :" + reply);
         } else if (index == 6) {
-		// hosArray -> list 
-		send_hos_list(locArray,hosListSize,reply);
-        } 
+            // hosArray -> list
+            send_hos_list(locArray, hosListSize, reply);
+        }
     }
 
     function find_hos_location(gu, dong) {
-        connection.query("SELECT * FROM testTB2 WHERE id > 17000 ;", function (err,result,field) {
+        connection.query("SELECT * FROM testTB2 WHERE id > 17000 ;", function (err, result, field) {
             if (err) {
                 console.log("selection error");
                 throw err;
-            }else{
+            } else {
 
-                for(var elem in result){
-		    //console.log(result[elem]['name']);
-            	   locArray[elem] = result[elem]['name'];        
+                for (var elem in result) {
+                    //console.log(result[elem]['name']);
+                    locArray[elem] = result[elem]['name'];
                 }
-		hosListSize = result.length;
+                hosListSize = result.length;
                 index = 6;
-	//	send_hos_list(locArray,result.length);
+                //	send_hos_list(locArray,result.length);
                 console.log(result.length);
             }
         })
     }
-// button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근 
-    function send_hos_list(nameArray,size,reply){
-	// locArray - nameArray : 병원 이름 넣어둔 배열
-	console.log(nameArray[0] + "test // name" + nameArray[1] + "test // size" + size + "test // click" + reply ) ;
-/*
-	message = {
-	    "message" : {
-                   "text " : "병원 리스트 입니다."
-             },
-	    "keyboard" : {
-		"type" : "buttons",
-                "buttons" : [
-			for(var idx in nameArray){
-				"'"+ nameArray[idx] +"',"
-                        }
-                 ]
-             } 
-        } 
-*/
+
+// button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
+    function send_hos_list(nameArray, size, reply) {
+        // locArray - nameArray : 병원 이름 넣어둔 배열
+        console.log(nameArray[0] + "test // name" + nameArray[1] + "test // size" + size + "test // click" + reply);
+        var names = "'";
+        for(var elem in nameArray){
+            names  = names + nameArray[elem]+"',"
+        }
+        message = {
+            "message": {
+                "text ": "병원 리스트 입니다."
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": [
+                    names
+                ]
+            }
+        }
+
     }
+
     function recognition_pic(pic) {
         console.log(pic + "사진 경로 입니다.");
 
@@ -1431,4 +1434,18 @@ module.exports = function (router) {
         }).send(JSON.stringify(message));
     });
 
+    /*
+     방 나갈 때 변수 초기화
+     */
+
+    router.delete("/chat_room/:user_key", function (req, res) {
+        const user_key = req.params.user_key;
+        index = 0;
+        subindex1 = 0;
+        subindex2 = 0;
+        // 초기화
+        res.set({
+            'content-type': 'application/json'
+        }).send(JSON.stringify({success: true}));
+    })
 };
