@@ -107,12 +107,6 @@ module.exports = function (router) {
          SQL 서버에서 쿼리문을 통해서 부위에 맞게 덴덴         */
     }
 
-    function hos_close_here() {
-        /*
-         구로 나누기 / 동으로 나누기
-         */
-        sendLocNowInfo();
-    }
 
 // 카메라 연동
     function cam_record_connection() {
@@ -1050,7 +1044,7 @@ module.exports = function (router) {
     }
 
 
-    function sendLocNowInfo(lat,lng,reply) {
+    function sendLocNowInfo(lat, lng, reply) {
         message = {
             "message": {
                 "text": "현재 위치를 체크합니다.",
@@ -1060,14 +1054,14 @@ module.exports = function (router) {
                     "height": 480
                 },
                 "message_button": {
-		    /*
+                    /*
+                     "label": "위치 확인",
+                     "url": "http://map.daum.net/?eX="+lat+"&eY="+lng+"&eName="+reply
+                     */
+
                     "label": "위치 확인",
-                    "url": "http://map.daum.net/?eX="+lat+"&eY="+lng+"&eName="+reply
-                    */
-		     
-                     "label":"위치 확인",
-                     "url": "http://52.79.83.51:2721/map"
-                     
+                    "url": "http://52.79.83.51:2721/map"
+
                 }
             }
         };
@@ -1279,19 +1273,21 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else if (index == 5) {
+            index = 6;
             find_hos_location(sgguMap.get(subindex1), reply);
             console.log("구 : " + sgguMap.get(subindex1) + "동 :" + reply);
         } else if (index == 6) {
             // hosArray -> list
+            index = 7;
             send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
-	 
-	 connection.query("SELECT * FROM testTB2 WHERE name = " + "'" +건국대학교병원+ "';",function(err,result,field){
-               if(err) throw err;
-               else{
-                  // sendLocNowInfo(result[0]['lat'],result[0]['lng'],reply);
-               }
-          });
+
+            connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
+                if (err) throw err;
+                else {
+                     sendLocNowInfo(result[0]['lat'],result[0]['lng'],reply);
+                }
+            });
         }
     }
 
@@ -1307,12 +1303,12 @@ module.exports = function (router) {
                     locArray[elem] = result[elem]['name'];
                 }
                 hosListSize = result.length;
-                index = 6;
+
                 //	send_hos_list(locArray,result.length);
-		
+
             }
         })
-   }
+    }
 
 // button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
     function send_hos_list(nameArray, size, reply) {
@@ -1321,11 +1317,10 @@ module.exports = function (router) {
         var nameList = [];
 // 위도 , 경도 
 
-        for(var i=0;i<size;i++){
-	     nameList.push(nameArray[i]);
-	} 
-	
-	message = {
+        for (var i = 0; i < size; i++) {
+            nameList.push(nameArray[i]);
+        }
+        message = {
             "message": {
                 "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
             },
@@ -1334,16 +1329,7 @@ module.exports = function (router) {
                 "buttons": nameList
             }
         };
-        index = 7; 
-     /*
-	connection.query("SELECT * FROM testTB2 WHERE name = " + "'" +건국대학교병원+ "';",function(err,result,field){
-	       if(err) throw err;
-               else{
-		  // sendLocNowInfo(result[0]['lat'],result[0]['lng'],reply);	  
-               }
-        });
-     */
-   }
+    }
 
     function recognition_pic(pic) {
         console.log(pic + "사진 경로 입니다.");
