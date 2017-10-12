@@ -22,7 +22,15 @@ var sCode = "";
 var NodeWebCam = require("node-webcam");
 var sgguMap = new Map();
 
-
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+    host: 'helpdb.crqysrfu2n53.ap-northeast-2.rds.amazonaws.com',
+    user: 'haams',
+    password: 'abc123qw',
+    database: 'helpDB',
+    port: 3306,
+    version: 1.0
+});
 //var Camera = require("./service/camera");
 
 
@@ -1266,14 +1274,27 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else {
+            find_hos_location(sgguMap.get(subindex1), reply);
             console.log("구 : " + sgguMap.get(subindex1) + "동 :" + reply);
         }
     }
 
+    function find_hos_location(gu, dong) {
+        var result = [];
+        result = connection.query("SELECT name FROM testTB2 WHERE adress LIKE %" + "'" + gu + "' AND " + "LIKE %" + "'" + dong + "';", function (err) {
+            if (err) {
+                console.log("selection error");
+                throw err;
+            }else{
+                console.log(result);
+            }
+        })
+    }
+
     function recognition_pic(pic) {
         console.log(pic + "사진 경로 입니다.");
-        
-	message = {
+
+        message = {
             "message": {
                 "text": "확인 중 입니다. 잠시만 기다려주세요."
             },
@@ -1281,52 +1302,8 @@ module.exports = function (router) {
                 "type": "text"
             }
         };
-       
-       // var vision = require("@google-cloud/vision");
-       analyze_pictures(pic);
-        /*
-        var vision = require("@google-cloud/vision");
-        //var vision = Vision();
 
-        var visionClient = vision({
-            projectId: require("./path/to/cadiStudy-e2f53b48c145.json").project_id,
-            keyFilename: '/path/to/cadiStudy-e2f53b48c145.json',
-            clientId: require("./path/to/cadiStudy-e2f53b48c145.json").client_id
-        });
-
-        console.log(pic+"사진");
-        var type = vision.v1.types.Feature.Type.FACE_DETECTION;
-        var featuresElement = {
-            type: type
-        };
-        var features = [featuresElement];
-
-        var source = {
-            pic: pic
-        };
-        var image = {
-            source: source
-        };
-        var requestsElement = {
-            image: image,
-            features: features
-        };
-        var requests = [requestsElement];
-
-        visionClient.batchAnnotateImages({requests: requests}).then(function (responses) {
-            var response = responses[0];
-        }).catch(function (err) {
-            console.error(err);
-        });
-
-        visionClient.labelDetection({requests: requests}).then((results) => {
-            const labels = results[0].labelAnnotations;
-            console.log('Labels:');
-            labels.forEach((label) => console.log(label.description));
-        }).catch((err) => {
-            console.error('Error : ', err);
-        });
-*/
+        analyze_pictures(pic);
     }
 
 
@@ -1340,7 +1317,7 @@ module.exports = function (router) {
             clientId: require("./path/to/cadiStudy-700cb00dfcfe.json").client_id
         });
 
-        console.log(pic+"사진");
+        console.log(pic + "사진");
         var type = vision.v1.types.Feature.Type.FACE_DETECTION;
         var featuresElement = {
             type: type
