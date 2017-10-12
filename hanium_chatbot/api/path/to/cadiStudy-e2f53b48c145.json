@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cadistudy",
+  "private_key_id": "e2f53b48c145e77879f0ce0774fd0407bfea8860",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQChEc/9GAzfBHFW\np2jgpVeVk/QkXWR9GFDCLAYgLrZbjwZOf7trSy0xxnQIN4OY2YKLd05ynUCHdmcr\nUXSxioVWlQ88bQd3kofF5BKlweyAEO2sB4nnvsXepvdLT8QECFT/5iQjjLi3Xl3H\nlCoLdZIKGDUaV6P2DgwESxoEW5llFNiHRilrQyT6dF6YULSrMJ+Z3Z6P4MiIoXQz\nR1744D08tGnjVDIGMT60VPDXEn2sMKIr0QSpH2VG+ni2S4F2mCV9y1JsgUqE1OL5\nvBwo5UWxh9a0WRT61/cs6pfJ7AvA4ouI+jLyyD35eeMrtlaPuEP3AoJvvR7P3NWS\n9cv8zcILAgMBAAECggEAC3uvSLZX5z0e2MmzUsjBl3ARPi0hBpYe3n5bAB0Jx+Se\nKNHhym11TxDR9uqrntBrBocT+FyOXC9XKEx0ta+lf/MSlKvv61jEBe9pBkOZboFG\ndeGiYFDxNHAnk0lK3+q5fKEAvz6/cJCcE6gpiIryRXaiWpAYUr4qTH1k4R39Wqpm\nghN5eVIKcpMX8E2Xo23yDXwTudl3CUhTT1gM37xIDaEoCpgyV1wvwPYZ9HLQJfCB\nOrr5FR63biBw60JXNzTBjHut6DXq0V5elOU4KX90zU32c5wc2+Hl85PsmnOZQ/uY\nFzpmKH0NKgVUaaS66J8dq8GxlH+QlMXwbKwClEnpsQKBgQDNfPc2ZmwBt8GyzR9T\n6tRHCBnnp5AmcPSaTTViYOhamuAxeBLdL+SGYBjBwScglekAdbIz9rADYhmjRPxV\ncAMOblb14d2F+LJwLQutyX42HDFs4vUsOJTlbFpt/fIMHwfjggX0ibrUN+CqMFUx\n6elCsoRl9RlaAXg5Sah+qTjvMwKBgQDIqaihMPSEqay1EXEe8lpBep4Ufm5H+ctk\nUWKlEXeTxmrpoB13H7CwOu4FRL3WIg9/oxQkLK8XjUHBfzro80eFHyFjGqzz6Eg4\nXCkA/VR9GsiqRm26QphLzd2lQYci7AxdnOz41Rsz7f0G/wGO3g8YDJYSpIvuNZu4\nEXb75CpByQKBgGeFJSWKw6653CMvozCrhPWj5ykFCWHUVeXGL7a4C1ZZ38gMLbSw\ng/gOQWqa3BNWcmOA5522EUYjDbdq8ZQ5MdD7VWPZvbfYakyI5PFQKP0phtzMGaeF\neb16sLPo0x+4IklDH6zqFe0DmXMjlkfnB1RKitiyeWsWgnKZ4QCuT7hxAoGACwXG\nzZPy2pa3dfrPS/PkIVSq+lU3mZyPH6OY15huCSANH2g8Nh73hba2/HMaOnkEgO5k\nXNhXheOsiQSEJ+e1NgrPurHsbjmEPhRR7Ev+KCEghLn5rRGbbA6S7lD7K1/sDfhg\nzApoxCF+lLPNUhvAmIGYfM2tIhivxRywfIW8DIECgYBxmuklDIdjBunI7+o4JNb/\nXp3sROBzuuFXo6f4QHEWM7lx2tPTe8e9IiAkG9MtanRkYVmEFyhsx8ZOh71+aem2\nDMAThEyiPLc3zTwuN2o65ZvrdLVvFaphWxa5+dVT9N5WVoCc3rhXZMrtFsfQZqWO\na3OV0rgPNNwDcsaKRiBi/w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "vision-quickstart@cadistudy.iam.gserviceaccount.com",
+  "client_id": "102372015824417933085",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vision-quickstart%40cadistudy.iam.gserviceaccount.com"
+}
