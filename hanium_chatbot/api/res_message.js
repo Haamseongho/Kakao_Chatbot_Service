@@ -1286,9 +1286,22 @@ module.exports = function (router) {
         analyze_pictures(pic);
     }
 
+
     function analyze_pictures(pic) {
-        const Vision = require("@google-cloud/vision");
-        const vision = Vision();
+/*
+        var config = {
+          projectId: 'cadistudy',
+          keyFilename: __dirname + '/../key_folder/cadiStudy-e2f53b48c145.json'
+        }
+*/
+        var Vision = require("@google-cloud/vision");
+
+	/*var vision = Vision({
+	  projectId: 'cadistudy',
+          keyFilename: __dirname + '/../key_folder/cadiStudy-e2f53b48c145.json'
+	});
+
+        //const vision = Vision();
         const fileName = pic;
         const request = {
             source: {
@@ -1301,7 +1314,7 @@ module.exports = function (router) {
             labels.forEach((label) => console.log(label.description));
         }).catch((err) => {
             console.error('Error : ', err);
-        });
+        });*/
     }
 
     function recognition_part(part) {
