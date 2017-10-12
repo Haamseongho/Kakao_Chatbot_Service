@@ -1282,8 +1282,8 @@ module.exports = function (router) {
             }
         };
        
-        var vision = require("@google-cloud/vision");
-     //   analyze_pictures(pic);
+       // var vision = require("@google-cloud/vision");
+       analyze_pictures(pic);
         /*
         var vision = require("@google-cloud/vision");
         //var vision = Vision();
@@ -1335,9 +1335,9 @@ module.exports = function (router) {
         const vision = Vision();
 
         var visionClient = vision({
-            projectId: require("./path/to/cadiStudy-e2f53b48c145.json").project_id,
+            projectId: require("./path/to/cadiStudy-700cb00dfcfe.json").project_id,
             keyFilename: '/path/to/cadiStudy-e2f53b48c145.json',
-            clientId: require("./path/to/cadiStudy-e2f53b48c145.json").client_id
+            clientId: require("./path/to/cadiStudy-700cb00dfcfe.json").client_id
         });
 
         console.log(pic+"사진");

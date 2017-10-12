@@ -48,23 +48,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="res_message.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="res_message.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/res_message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="1312" column="23" lean-forward="false" selection-start-line="1312" selection-start-column="23" selection-end-line="1312" selection-end-column="23" />
+            <state relative-caret-position="1047">
+              <caret line="1379" column="19" lean-forward="false" selection-start-line="1379" selection-start-column="19" selection-end-line="1379" selection-end-column="19" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
+                <marker date="1507777099687" expanded="true" signature="34076:35049" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="34171:34205" ph="{&quot;type&quot;: type...}" />
+                <marker date="1507777099687" expanded="true" signature="34271:34303" ph="{&quot;pic&quot;: pic...}" />
+                <marker date="1507777099687" expanded="true" signature="34325:34363" ph="{&quot;source&quot;: source...}" />
+                <marker date="1507777099687" expanded="true" signature="34395:34463" ph="{&quot;image&quot;: image...}" />
+                <marker date="1507777099687" expanded="true" signature="34672:34715" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="34795:34969" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="34986:35041" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="35087:35386" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="35143:35330" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="35168:35248" ph="{&quot;text&quot;: &quot;선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요.&quot;...}" />
+                <marker date="1507777099687" expanded="true" signature="35274:35320" ph="{&quot;type&quot;: &quot;text&quot;...}" />
+                <marker date="1507777099687" expanded="true" signature="35340:35380" ph="/*...*/" />
+                <marker date="1507777099687" expanded="true" signature="35474:35597" ph="{&quot;user_key&quot;: req.body.user_key...}" />
+                <marker date="1507777099687" expanded="true" signature="35645:35749" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="35798:35931" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="35945:36210" ph="{...}" />
+                <marker date="1507777099687" expanded="true" signature="36013:36155" ph="//..." />
+                <marker date="1507777099687" expanded="true" signature="36228:36286" ph="{&quot;content-type&quot;: 'application/json'...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cadiStudy-e2f53b48c145.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cadiStudy-e2f53b48c145.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/path/to/cadiStudy-e2f53b48c145.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -188,9 +207,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="574" />
-    <option name="y" value="11" />
-    <option name="width" value="1295" />
+    <option name="x" value="670" />
+    <option name="y" value="87" />
+    <option name="width" value="1299" />
     <option name="height" value="1021" />
   </component>
   <component name="ProjectView">
@@ -379,12 +398,12 @@
       <workItem from="1507632623139" duration="1178000" />
       <workItem from="1507640522059" duration="4614000" />
       <workItem from="1507696588504" duration="12425000" />
-      <workItem from="1507772824501" duration="1142000" />
+      <workItem from="1507772824501" duration="2414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108455000" />
+    <option name="totallyTimeSpent" value="109727000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -396,10 +415,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="574" y="11" width="1295" height="1021" extended-state="0" />
+    <frame x="670" y="87" width="1299" height="1021" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2434158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24264121" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32396087" sideWeight="0.4958791" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4021164" sideWeight="0.5061813" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -450,6 +469,25 @@
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
+            <marker date="1507777099687" expanded="true" signature="34076:35049" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34171:34205" ph="{&quot;type&quot;: type...}" />
+            <marker date="1507777099687" expanded="true" signature="34271:34303" ph="{&quot;pic&quot;: pic...}" />
+            <marker date="1507777099687" expanded="true" signature="34325:34363" ph="{&quot;source&quot;: source...}" />
+            <marker date="1507777099687" expanded="true" signature="34395:34463" ph="{&quot;image&quot;: image...}" />
+            <marker date="1507777099687" expanded="true" signature="34672:34715" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34795:34969" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34986:35041" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35087:35386" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35143:35330" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35168:35248" ph="{&quot;text&quot;: &quot;선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요.&quot;...}" />
+            <marker date="1507777099687" expanded="true" signature="35274:35320" ph="{&quot;type&quot;: &quot;text&quot;...}" />
+            <marker date="1507777099687" expanded="true" signature="35340:35380" ph="/*...*/" />
+            <marker date="1507777099687" expanded="true" signature="35474:35597" ph="{&quot;user_key&quot;: req.body.user_key...}" />
+            <marker date="1507777099687" expanded="true" signature="35645:35749" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35798:35931" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35945:36210" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="36013:36155" ph="//..." />
+            <marker date="1507777099687" expanded="true" signature="36228:36286" ph="{&quot;content-type&quot;: 'application/json'...}" />
           </folding>
         </state>
       </provider>
@@ -523,6 +561,25 @@
           <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
+            <marker date="1507777099687" expanded="true" signature="34076:35049" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34171:34205" ph="{&quot;type&quot;: type...}" />
+            <marker date="1507777099687" expanded="true" signature="34271:34303" ph="{&quot;pic&quot;: pic...}" />
+            <marker date="1507777099687" expanded="true" signature="34325:34363" ph="{&quot;source&quot;: source...}" />
+            <marker date="1507777099687" expanded="true" signature="34395:34463" ph="{&quot;image&quot;: image...}" />
+            <marker date="1507777099687" expanded="true" signature="34672:34715" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34795:34969" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34986:35041" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35087:35386" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35143:35330" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35168:35248" ph="{&quot;text&quot;: &quot;선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요.&quot;...}" />
+            <marker date="1507777099687" expanded="true" signature="35274:35320" ph="{&quot;type&quot;: &quot;text&quot;...}" />
+            <marker date="1507777099687" expanded="true" signature="35340:35380" ph="/*...*/" />
+            <marker date="1507777099687" expanded="true" signature="35474:35597" ph="{&quot;user_key&quot;: req.body.user_key...}" />
+            <marker date="1507777099687" expanded="true" signature="35645:35749" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35798:35931" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35945:36210" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="36013:36155" ph="//..." />
+            <marker date="1507777099687" expanded="true" signature="36228:36286" ph="{&quot;content-type&quot;: 'application/json'...}" />
           </folding>
         </state>
       </provider>
@@ -778,21 +835,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/path/to/cadiStudy-e2f53b48c145.json">
+    <entry file="file://$PROJECT_DIR$/api/res_message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="1047">
+          <caret line="1379" column="19" lean-forward="false" selection-start-line="1379" selection-start-column="19" selection-end-line="1379" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+            <marker date="1507777099687" expanded="true" signature="34076:35049" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34171:34205" ph="{&quot;type&quot;: type...}" />
+            <marker date="1507777099687" expanded="true" signature="34271:34303" ph="{&quot;pic&quot;: pic...}" />
+            <marker date="1507777099687" expanded="true" signature="34325:34363" ph="{&quot;source&quot;: source...}" />
+            <marker date="1507777099687" expanded="true" signature="34395:34463" ph="{&quot;image&quot;: image...}" />
+            <marker date="1507777099687" expanded="true" signature="34672:34715" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34795:34969" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="34986:35041" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35087:35386" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35143:35330" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35168:35248" ph="{&quot;text&quot;: &quot;선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요.&quot;...}" />
+            <marker date="1507777099687" expanded="true" signature="35274:35320" ph="{&quot;type&quot;: &quot;text&quot;...}" />
+            <marker date="1507777099687" expanded="true" signature="35340:35380" ph="/*...*/" />
+            <marker date="1507777099687" expanded="true" signature="35474:35597" ph="{&quot;user_key&quot;: req.body.user_key...}" />
+            <marker date="1507777099687" expanded="true" signature="35645:35749" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35798:35931" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="35945:36210" ph="{...}" />
+            <marker date="1507777099687" expanded="true" signature="36013:36155" ph="//..." />
+            <marker date="1507777099687" expanded="true" signature="36228:36286" ph="{&quot;content-type&quot;: 'application/json'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/res_message.js">
+    <entry file="file://$PROJECT_DIR$/api/path/to/cadiStudy-e2f53b48c145.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="1312" column="23" lean-forward="false" selection-start-line="1312" selection-start-column="23" selection-end-line="1312" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="253">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
