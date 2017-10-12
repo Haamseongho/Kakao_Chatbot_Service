@@ -1289,13 +1289,38 @@ module.exports = function (router) {
     function analyze_pictures(pic) {
         const Vision = require("@google-cloud/vision");
         const vision = Vision();
-        const fileName = pic;
-        const request = {
-            source: {
-                filename: fileName
-            }
+
+        var visionClient = vision({
+            projectId: require("./path/to/cadiStudy-e2f53b48c145.json").project_id,
+            keyFilename: '/path/to/cadiStudy-e2f53b48c145.json',
+            clientId: require("./path/to/cadiStudy-e2f53b48c145.json").client_id
+        });
+
+        var type = vision.v1.types.Feature.Type.FACE_DETECTION;
+        var featuresElement = {
+            type: type
         };
-        vision.labelDetection(request).then((results) => {
+        var features = [featuresElement];
+
+        var source = {
+            pic: pic
+        };
+        var image = {
+            source: source
+        };
+        var requestsElement = {
+            image: image,
+            features: features
+        };
+        var requests = [requestsElement];
+
+        visionClient.batchAnnotateImages({requests: requests}).then(function (responses) {
+            var response = responses[0];
+        }).catch(function (err) {
+            console.error(err);
+        });
+
+        visionClient.labelDetection({requests: requests}).then((results) => {
             const labels = results[0].labelAnnotations;
             console.log('Labels:');
             labels.forEach((label) => console.log(label.description));
