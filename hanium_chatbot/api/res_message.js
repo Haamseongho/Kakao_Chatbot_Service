@@ -1050,7 +1050,7 @@ module.exports = function (router) {
     }
 
 
-    function sendLocNowInfo() {
+    function sendLocNowInfo(lat,lng,reply) {
         message = {
             "message": {
                 "text": "현재 위치를 체크합니다.",
@@ -1060,12 +1060,14 @@ module.exports = function (router) {
                     "height": 480
                 },
                 "message_button": {
+		    /*
                     "label": "위치 확인",
-                    "url": "http://map.daum.net/?eX=523953&eY=1084098&eName=%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8C%90%EA%B5%90%EC%98%A4%ED%94%BC%EC%8A%A4"
-                    /*
+                    "url": "http://map.daum.net/?eX="+lat+"&eY="+lng+"&eName="+reply
+                    */
+		     
                      "label":"위치 확인",
                      "url": "http://52.79.83.51:2721/map"
-                     */
+                     
                 }
             }
         };
@@ -1282,11 +1284,19 @@ module.exports = function (router) {
         } else if (index == 6) {
             // hosArray -> list
             send_hos_list(locArray, hosListSize, reply);
+        } else if (index == 7) {
+	 
+	 connection.query("SELECT * FROM testTB2 WHERE name = " + "'" +건국대학교병원+ "';",function(err,result,field){
+               if(err) throw err;
+               else{
+                  // sendLocNowInfo(result[0]['lat'],result[0]['lng'],reply);
+               }
+          });
         }
     }
 
     function find_hos_location(gu, dong) {
-        connection.query("SELECT * FROM testTB2 WHERE id > 17000 ;", function (err, result, field) {
+        connection.query("SELECT * FROM testTB2 WHERE id < 500 ;", function (err, result, field) {
             if (err) {
                 console.log("selection error");
                 throw err;
@@ -1299,32 +1309,41 @@ module.exports = function (router) {
                 hosListSize = result.length;
                 index = 6;
                 //	send_hos_list(locArray,result.length);
-                console.log(result.length);
+		
             }
         })
-    }
+   }
 
 // button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
     function send_hos_list(nameArray, size, reply) {
         // locArray - nameArray : 병원 이름 넣어둔 배열
         console.log(nameArray[0] + "test // name" + nameArray[1] + "test // size" + size + "test // click" + reply);
-        var names = "'";
-        for(var elem in nameArray){
-            names  = names + nameArray[elem]+"',"
-        }
-        message = {
+        var nameList = [];
+// 위도 , 경도 
+
+        for(var i=0;i<size;i++){
+	     nameList.push(nameArray[i]);
+	} 
+	
+	message = {
             "message": {
-                "text ": "병원 리스트 입니다."
+                "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons": [
-                    names
-                ]
+                "buttons": nameList
             }
-        }
-
-    }
+        };
+        index = 7; 
+     /*
+	connection.query("SELECT * FROM testTB2 WHERE name = " + "'" +건국대학교병원+ "';",function(err,result,field){
+	       if(err) throw err;
+               else{
+		  // sendLocNowInfo(result[0]['lat'],result[0]['lng'],reply);	  
+               }
+        });
+     */
+   }
 
     function recognition_pic(pic) {
         console.log(pic + "사진 경로 입니다.");
