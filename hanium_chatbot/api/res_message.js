@@ -1281,7 +1281,7 @@ module.exports = function (router) {
             index = 7;
             send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
-
+/*
             connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
                 if (err) {
                     console.log("이 부분에서 index는 돌까요?");
@@ -1291,6 +1291,7 @@ module.exports = function (router) {
                     sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
                 }
             });
+*/
         }
     }
 
@@ -1332,6 +1333,18 @@ module.exports = function (router) {
                 "buttons": nameList
             }
         };
+
+
+	  connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
+                if (err) {
+                    console.log("이 부분에서 index는 돌까요?");
+                    throw err;
+                }
+                else {
+                    sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
+                }
+            });
+
     }
 
     function recognition_pic(pic) {
