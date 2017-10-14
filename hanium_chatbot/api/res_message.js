@@ -1419,7 +1419,7 @@ module.exports = function (router) {
 
         var visionClient = vision({
             projectId: require("./path/to/cadiStudy-700cb00dfcfe.json").project_id,
-            keyFilename: '/path/to/cadiStudy-e2f53b48c145.json',
+            keyFilename: './path/to/cadiStudy-700cb00dfcfe.json',
             clientId: require("./path/to/cadiStudy-700cb00dfcfe.json").client_id
         });
 
