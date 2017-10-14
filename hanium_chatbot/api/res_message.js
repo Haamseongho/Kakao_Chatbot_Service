@@ -1296,7 +1296,7 @@ module.exports = function (router) {
             // hosArray -> list
             console.log(index + "입니다... 여기로는 갈까요?");
             index = 7;
-//            send_hos_list(locArray, hosListSize, reply);
+           //send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
             console.log(index + "값입니다.");
             /*
