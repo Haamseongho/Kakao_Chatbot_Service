@@ -1292,7 +1292,13 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else if (index == 5) {
-            find_hos_location(sgguMap.get(subindex1), reply);
+	    query_func(index,sgguMap.get(subindex1),reply,function(err,next){
+		if(err) throw err;
+		else {
+		   find_hos_location(sgguMap.get(subindex1),reply);
+                } 
+       	    });
+           // find_hos_location(sgguMap.get(subindex1), reply);
         } else if (index == 6) {
             // hosArray -> list
 //            console.log(index + "입니다... 여기로는 갈까요?");
@@ -1318,15 +1324,8 @@ module.exports = function (router) {
         /*
          구 동으로 나누기 reply == dong
          */
-        query_func(index, gu, dong, function (err, next) {
-            if (err) {
-                console.log("error index")
-            } else {
-                next()
-            }
-        });
-
         console.log(gu + "/" + dong);
+
 
 
         /*
@@ -1492,7 +1491,7 @@ module.exports = function (router) {
                     console.log("selection error");
                     throw err;
                 } else {
-                    console.log(result.length + "사이즈 제공");
+                   // console.log(result.length + "사이즈 제공");
 
                     for (var elem in result) {
                         //console.log(result[elem]['name']);
@@ -1506,10 +1505,11 @@ module.exports = function (router) {
                     send_hos_list(nameList, result.length);
                 }
             });
-            return callback;
+	    
+            return callback(index,gu,dong);
         } else {
             console.log('skip .. indexing');
-            return callback;
+            // nothing;
         }
     }
 
@@ -1542,7 +1542,7 @@ module.exports = function (router) {
             // 동을 선택하도록 진행.
 
             //console.log(index + "/" + _obj.content);
-
+	        
             save_second_reply(_obj.content);
         }
 
