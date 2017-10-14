@@ -1045,6 +1045,7 @@ module.exports = function (router) {
 
 
     function sendLocNowInfo(lat, lng, reply) {
+        console.log("지도 연동까지는 되나..?");
         message = {
             "message": {
                 "text": "현재 위치를 체크합니다.",
@@ -1296,6 +1297,9 @@ module.exports = function (router) {
     }
 
     function find_hos_location(gu, dong) {
+        /*
+        구 동으로 나누기 reply == dong
+         */
         connection.query("SELECT * FROM testTB2 WHERE id < 500 ;", function (err, result, field) {
             if (err) {
                 console.log("selection error");
@@ -1311,29 +1315,32 @@ module.exports = function (router) {
                 //	send_hos_list(locArray,result.length);
 
             }
-        })
-    }
+        });
 
-// button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
-    function send_hos_list(nameArray, size, reply) {
-        // locArray - nameArray : 병원 이름 넣어둔 배열
-        console.log(nameArray[0] + "test // name" + nameArray[1] + "test // size" + size + "test // click" + reply);
         var nameList = [];
-// 위도 , 경도 
+// 위도 , 경도
 
         for (var i = 0; i < size; i++) {
-            nameList.push(nameArray[i]);
+            nameList.push(locArray[i]);
         }
+
+
         message = {
             "message": {
                 "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons": nameList
+                "buttons": locArray
             }
         };
 
+    }
+
+// button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
+    function send_hos_list(nameArray, size, reply) {
+        // locArray - nameArray : 병원 이름 넣어둔 배열
+        // reply -- 병원 명이 됨
 
 	  connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
                 if (err) {
