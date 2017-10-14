@@ -1095,6 +1095,11 @@ module.exports = function (router) {
     function save_second_reply(reply) {
         var message2 = new MessageDB();
 
+        if(index == 0){
+            index = 2;
+            setLocation1();
+        }
+
         if (index == 1) {
             if (reply == "사진으로 아픈 부위 알리기") {
                 // 두 번째 질문과 겹치지 않게 하기 위함.
@@ -1490,14 +1495,13 @@ module.exports = function (router) {
             hurt_part_check();
         }
         else if (_obj.content == "가까운 병원 찾아가기") {
-            index = 2;
+            index = 0;
             console.log("두 번째 버튼 클릭");
-            setLocation1();
+
             //hos_close_here();
         }
         else {
             console.log('subindex1 : ' + subindex1);
-
             // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
             // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
             // 동을 선택하도록 진행.
