@@ -1297,7 +1297,7 @@ module.exports = function (router) {
             // hosArray -> list
 //            console.log(index + "입니다... 여기로는 갈까요?");
             index = 7;
-           //send_hos_list(locArray, hosListSize, reply);
+//            send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
   //          console.log(index + "값입니다.");
             /*
@@ -1390,7 +1390,7 @@ module.exports = function (router) {
                 "type": "buttons",
                 "buttons": nameList
             }
-	
+	index = 6;
             /*
              connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
              if (err) {
@@ -1403,8 +1403,7 @@ module.exports = function (router) {
              });
              */
         }
-
-	index = 6;
+//	index = 6;
     }
 
     function recognition_pic(pic) {
@@ -1484,7 +1483,6 @@ module.exports = function (router) {
 
     function query_func(index,gu,dong,callback){
 	if(index == 5){
-/*
            connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
       		 if (err) {
                 	console.log("selection error");
@@ -1504,8 +1502,7 @@ module.exports = function (router) {
                 	send_hos_list(nameList, result.length);
            	}
            });
-*/
-	return false;
+
 	}else{
 	   console.log('skip .. indexing');
 	   return true;
