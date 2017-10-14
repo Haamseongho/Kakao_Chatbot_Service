@@ -1283,9 +1283,12 @@ module.exports = function (router) {
         } else if (index == 7) {
 
             connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
-                if (err) throw err;
+                if (err) {
+                    console.log("이 부분에서 index는 돌까요?");
+                    throw err;
+                }
                 else {
-                     sendLocNowInfo(result[0]['lat'],result[0]['lng'],reply);
+                    sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
                 }
             });
         }
