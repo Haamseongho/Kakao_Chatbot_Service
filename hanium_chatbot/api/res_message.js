@@ -1112,7 +1112,7 @@ module.exports = function (router) {
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
-                    sgguMap.set(subindex1, reply)
+                    sgguMap.set(subindex1, reply);
                     setBtnGangNam();
                     break;
                 }
