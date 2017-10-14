@@ -1108,8 +1108,8 @@ module.exports = function (router) {
                 hurt_part_select();
             }
         } else if (index == 2) { // 두 번째 버튼 - 가야할 병원 선택
-		index = 5;
-            console.log(reply+"index 값 2일 때 ");
+            index = 5;
+            console.log(reply + "index 값 2일 때 ");
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
@@ -1297,9 +1297,9 @@ module.exports = function (router) {
             // hosArray -> list
 //            console.log(index + "입니다... 여기로는 갈까요?");
             index = 7;
-           //send_hos_list(locArray, hosListSize, reply);
+            //send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
-  //          console.log(index + "값입니다.");
+            //          console.log(index + "값입니다.");
             /*
              connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
              if (err) {
@@ -1318,44 +1318,47 @@ module.exports = function (router) {
         /*
          구 동으로 나누기 reply == dong
          */
-        query_func(index,gu,dong,function(err,data){
-	      if(err) console.log("error index");
-	      else console.log('nice index');
-        });      
-	
-        console.log(gu + "/" + dong);
-	     
-
-     /*  
-	 var nameList = [];
-        connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
-       if (err) {
-                console.log("selection error");
-                throw err;
+        query_func(index, gu, dong, function (err, next) {
+            if (err) {
+                console.log("error index")
             } else {
-                console.log(result.length + "사이즈 제공");
+                next()
+            }
+        });
 
-                for (var elem in result) {
-                    //console.log(result[elem]['name']);
-                    locArray[elem] = result[elem]['name'];
-                }
+        console.log(gu + "/" + dong);
 
-                //	var nameList = [];
-                for (var i = 0; i < result.length; i++) {
-                    nameList.push(locArray[i]);
-                }
-*/
-               /* 
-                 message = {
-                 "message" : {
-                 "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
-                 },
-                 "keyboard" : {
-                 "type" : "buttons",
-                 "buttons":[ "abc","bcd","efg" ]
-                 }
-                 };
-                */
+
+        /*
+         var nameList = [];
+         connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
+         if (err) {
+         console.log("selection error");
+         throw err;
+         } else {
+         console.log(result.length + "사이즈 제공");
+
+         for (var elem in result) {
+         //console.log(result[elem]['name']);
+         locArray[elem] = result[elem]['name'];
+         }
+
+         //	var nameList = [];
+         for (var i = 0; i < result.length; i++) {
+         nameList.push(locArray[i]);
+         }
+         */
+        /*
+         message = {
+         "message" : {
+         "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
+         },
+         "keyboard" : {
+         "type" : "buttons",
+         "buttons":[ "abc","bcd","efg" ]
+         }
+         };
+         */
 //                send_hos_list(nameList, result.length);
 //
 //           }
@@ -1390,7 +1393,7 @@ module.exports = function (router) {
                 "type": "buttons",
                 "buttons": nameList
             }
-	
+
             /*
              connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
              if (err) {
@@ -1404,7 +1407,7 @@ module.exports = function (router) {
              */
         }
 
-	index = 6;
+        index = 6;
     }
 
     function recognition_pic(pic) {
@@ -1482,45 +1485,43 @@ module.exports = function (router) {
          */
     }
 
-    function query_func(index,gu,dong,callback){
-	if(index == 5){
-/*
-           connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
-      		 if (err) {
-                	console.log("selection error");
-                	throw err;
-            	} else {
-                	console.log(result.length + "사이즈 제공");
+    function query_func(index, gu, dong, callback) {
+        if (index == 5) {
+            connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
+                if (err) {
+                    console.log("selection error");
+                    throw err;
+                } else {
+                    console.log(result.length + "사이즈 제공");
 
-                	for (var elem in result) {
-                    //console.log(result[elem]['name']);
-                    		locArray[elem] = result[elem]['name'];
-                	}
+                    for (var elem in result) {
+                        //console.log(result[elem]['name']);
+                        locArray[elem] = result[elem]['name'];
+                    }
 
-                        var nameList = [];
-                	for (var i = 0; i < result.length; i++) {
-                    		nameList.push(locArray[i]);
-                	}
-                	send_hos_list(nameList, result.length);
-           	}
-           });
-*/
-	return false;
-	}else{
-	   console.log('skip .. indexing');
-	   return true;
+                    var nameList = [];
+                    for (var i = 0; i < result.length; i++) {
+                        nameList.push(locArray[i]);
+                    }
+                    send_hos_list(nameList, result.length);
+                }
+            });
+            return callback;
+        } else {
+            console.log('skip .. indexing');
+            return callback;
         }
     }
 
 
-    router.post("/message", checkUserKey,query_func, function (req, res) {
+    router.post("/message", checkUserKey, query_func, function (req, res) {
         const _obj = {
             user_key: req.body.user_key,
             type: req.body.type,
             content: req.body.content
         };
-	
-	console.log(_obj.content);
+
+        console.log(_obj.content);
         if (_obj.content == "가야할 병원 분류를 선택") {
             console.log("첫 번째 버튼 클릭");
             index = 1;
