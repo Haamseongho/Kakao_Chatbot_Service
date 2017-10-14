@@ -1077,20 +1077,19 @@ module.exports = function (router) {
          */
     }
 
-    function send_hos_list(nameList,size) {
+    function send_hos_list(nameList, size) {
         // locArray - nameArray : 병원 이름 넣어둔 배열
         // reply -- 병원 명이 됨
-         message = {
-                   "message" : {
-                        "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
-                    },
-                   "keyboard" : {
-                        "type" : "buttons",
-                        "buttons": nameList
-                    }
-               }
+        message = {
+            "message": {
+                "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": nameList
+            }
+        }
     }
-
 
 
     function save_second_reply(reply) {
@@ -1108,11 +1107,10 @@ module.exports = function (router) {
             }
         } else if (index == 2) { // 두 번째 버튼 - 가야할 병원 선택
             index = 5;
-	    switch (reply) {
+            switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
                     sgguMap.set(subindex1, reply);
-                    setBtnGangNam();
                     break;
                 }
 
@@ -1282,7 +1280,7 @@ module.exports = function (router) {
                     setBtnJoongRang();
                     break;
                 }
-	
+
             }
             //  var setLocationService = new SetLocationService(router,reply);
         } else if (index == 3) {
@@ -1290,36 +1288,42 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else if (index == 5) {
-		index = 6;
+            switch (subindex1) {
+                case 1: {
+                    setBtnGangNam();
+                    break;
+                }
+            }
+            index = 6;
             find_hos_location(sgguMap.get(subindex1), reply);
         } else if (index == 6) {
             // hosArray -> list
-	    console.log(index +"입니다... 여기로는 갈까요?");
+            console.log(index + "입니다... 여기로는 갈까요?");
             index = 7;
 //            send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
-		console.log(index + "값입니다.");
-/*
-            connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
-                if (err) {
-                    console.log("이 부분에서 index는 돌까요?");
-                    throw err;
-                }
-                else {
-                    sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
-                }
-            });
-*/
+            console.log(index + "값입니다.");
+            /*
+             connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
+             if (err) {
+             console.log("이 부분에서 index는 돌까요?");
+             throw err;
+             }
+             else {
+             sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
+             }
+             });
+             */
         }
     }
 
     function find_hos_location(gu, dong) {
         /*
-        구 동으로 나누기 reply == dong
+         구 동으로 나누기 reply == dong
          */
 
-	console.log(gu +"/"+ dong);
-	var nameList = [];
+        console.log(gu + "/" + dong);
+        var nameList = [];
         connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
             if (err) {
                 console.log("selection error");
@@ -1330,72 +1334,72 @@ module.exports = function (router) {
                     //console.log(result[elem]['name']);
                     locArray[elem] = result[elem]['name'];
                 }
-		console.log(result.length +"사이즈 제공");
-		
-	//	var nameList = [];
-		for (var i = 0; i <result.length ; i++){
-		      nameList.push(locArray[i]);
+                console.log(result.length + "사이즈 제공");
+
+                //	var nameList = [];
+                for (var i = 0; i < result.length; i++) {
+                    nameList.push(locArray[i]);
                 }
-/*
-		message = {
-		   "message" : {
-			"text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
-		    },
-		   "keyboard" : {
-			"type" : "buttons",
-			"buttons": nameList
-		    }
-		};
-*/
-              	send_hos_list(nameList,result.length);
+                /*
+                 message = {
+                 "message" : {
+                 "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
+                 },
+                 "keyboard" : {
+                 "type" : "buttons",
+                 "buttons": nameList
+                 }
+                 };
+                 */
+                send_hos_list(nameList, result.length);
 
             }
         });
 //		send_hos_list(nameList,result.length);
-/*	
-		
-		message = {
-                   "message" : {
-                        "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
-                    },
-                   "keyboard" : {
-                        "type" : "buttons",
-                        "buttons": nameList
+        /*
 
-                    }
-q
-                };
-*/
-	
-  }
+         message = {
+         "message" : {
+         "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
+         },
+         "keyboard" : {
+         "type" : "buttons",
+         "buttons": nameList
+
+         }
+         q
+         };
+         */
+
+    }
 
 // button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
-    function send_hos_list(nameList,size) {
+    function send_hos_list(nameList, size) {
         // locArray - nameArray : 병원 이름 넣어둔 배열
         // reply -- 병원 명이 됨
-	 message = {
-                   "message" : {
-                        "text" : "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
-                    },
-                   "keyboard" : {
-                        "type" : "buttons",
-                        "buttons": nameList
-                    }
-          
-/*
-	  connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
-                if (err) {
-                    console.log("이 부분에서 index는 돌까요?");
-                    throw err;
-                }
-                else {
-                    sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
-                }
-            });
-*/
-    }
+        message = {
+            "message": {
+                "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": nameList
+            }
+
+            /*
+             connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
+             if (err) {
+             console.log("이 부분에서 index는 돌까요?");
+             throw err;
+             }
+             else {
+             sendLocNowInfo(result[0]['lat'], result[0]['lng'], reply);
+             }
+             });
+             */
+        }
 //	index = 6;
-}
+    }
 
     function recognition_pic(pic) {
         console.log(pic + "사진 경로 입니다.");
@@ -1498,7 +1502,7 @@ q
             // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
             // 동을 선택하도록 진행.
             console.log(index);
-	    	save_second_reply(_obj.content);
+            save_second_reply(_obj.content);
         }
 
         res.set({
