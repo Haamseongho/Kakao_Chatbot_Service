@@ -1420,7 +1420,7 @@ module.exports = function (router) {
         var visionClient = vision({
             projectId: require("./path/to/cadiStudy-700cb00dfcfe.json").project_id,
             keyFilename: './path/to/cadiStudy-700cb00dfcfe.json',
-            clientId: require("./path/to/cadiStudy-700cb00dfcfe.json").client_id
+            //clientId: require("./path/to/cadiStudy-700cb00dfcfe.json").client_id
         });
 
         console.log(pic + "사진");
