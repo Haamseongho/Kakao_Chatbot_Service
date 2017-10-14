@@ -1095,12 +1095,11 @@ module.exports = function (router) {
     function save_second_reply(reply) {
         var message2 = new MessageDB();
 
-        if(index == 0){
+        if (index == 40) {
             index = 2;
             setLocation1();
         }
-
-        if (index == 1) {
+        else if (index == 1) {
             if (reply == "사진으로 아픈 부위 알리기") {
                 // 두 번째 질문과 겹치지 않게 하기 위함.
                 index = 3;
@@ -1495,9 +1494,8 @@ module.exports = function (router) {
             hurt_part_check();
         }
         else if (_obj.content == "가까운 병원 찾아가기") {
-            index = 0;
+            index = 40;
             console.log("두 번째 버튼 클릭");
-
             //hos_close_here();
         }
         else {
