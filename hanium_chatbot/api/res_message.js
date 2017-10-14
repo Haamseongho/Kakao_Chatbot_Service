@@ -192,6 +192,7 @@ module.exports = function (router) {
     }
 
     function setBtnGangDong() {
+        index = 5;
         message = {
             "message": {
                 "text": "가야할 병원을 선택해주세요."
@@ -1107,12 +1108,12 @@ module.exports = function (router) {
                 hurt_part_select();
             }
         } else if (index == 2) { // 두 번째 버튼 - 가야할 병원 선택
-            index = 5;
             console.log(reply+"index 값 2일 때 ");
             switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
-                    sgguMap.set(subindex1, reply);
+                    sgguMap.set(subindex1, reply)
+                    setBtnGangNam();
                     break;
                 }
 
@@ -1290,13 +1291,6 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else if (index == 5) {
-            switch (subindex1) {
-                case 1: {
-                    setBtnGangNam();
-                    break;
-                }
-            }
-            index = 6;
             find_hos_location(sgguMap.get(subindex1), reply);
         } else if (index == 6) {
             // hosArray -> list
@@ -1323,7 +1317,7 @@ module.exports = function (router) {
         /*
          구 동으로 나누기 reply == dong
          */
-
+        index = 6;
         console.log(gu + "/" + dong);
         var nameList = [];
         connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
