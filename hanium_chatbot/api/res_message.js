@@ -1108,7 +1108,7 @@ module.exports = function (router) {
             }
         } else if (index == 2) { // 두 번째 버튼 - 가야할 병원 선택
             index = 5;
-            switch (reply) {
+	    switch (reply) {
                 case "강남구": {
                     subindex1 = 1;
                     sgguMap.set(subindex1, reply);
@@ -1282,6 +1282,7 @@ module.exports = function (router) {
                     setBtnJoongRang();
                     break;
                 }
+	
             }
             //  var setLocationService = new SetLocationService(router,reply);
         } else if (index == 3) {
@@ -1289,16 +1290,13 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else if (index == 5) {
-	    console.log("index 값은 넘어가나요?");
-            index = 6;
-	    console.log(reply + "입니다.");
+		index = 6;
             find_hos_location(sgguMap.get(subindex1), reply);
-            console.log("구 : " + sgguMap.get(subindex1) + "동 :" + reply);
         } else if (index == 6) {
             // hosArray -> list
 	    console.log(index +"입니다... 여기로는 갈까요?");
             index = 7;
-            send_hos_list(locArray, hosListSize, reply);
+//            send_hos_list(locArray, hosListSize, reply);
         } else if (index == 7) {
 		console.log(index + "값입니다.");
 /*
@@ -1319,9 +1317,10 @@ module.exports = function (router) {
         /*
         구 동으로 나누기 reply == dong
          */
+
 	console.log(gu +"/"+ dong);
 	var nameList = [];
-        connection.query("SELECT * FROM testTB2 WHERE id < 500 ;", function (err, result, field) {
+        connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
             if (err) {
                 console.log("selection error");
                 throw err;
@@ -1382,7 +1381,7 @@ q
                         "type" : "buttons",
                         "buttons": nameList
                     }
-
+          
 /*
 	  connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + 건국대학교병원 + "';", function (err, result, field) {
                 if (err) {
@@ -1395,6 +1394,7 @@ q
             });
 */
     }
+//	index = 6;
 }
 
     function recognition_pic(pic) {
@@ -1497,7 +1497,8 @@ q
             // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
             // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
             // 동을 선택하도록 진행.
-            save_second_reply(_obj.content);
+            console.log(index);
+	    	save_second_reply(_obj.content);
         }
 
         res.set({
@@ -1520,3 +1521,4 @@ q
         }).send(JSON.stringify({success: true}));
     })
 };
+
