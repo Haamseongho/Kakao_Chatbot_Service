@@ -163,6 +163,10 @@ module.exports = function (router) {
 
     function sendLocNowInfo(lat, lng, name) {
         console.log("지도 연동까지는 되나..?");
+	console.log(lat +" // " + lng + " // " + name );
+	var latitude = (String(lat)).substr(0,9);
+	var longitude = (String(lng)).substr(0,10);
+	console.log(latitude +"/"+longitude);
         message = {
             "message": {
                 "text": "현재 위치를 체크합니다.",
@@ -172,14 +176,9 @@ module.exports = function (router) {
                     "height": 480
                 },
                 "message_button": {
-                    /*
                      "label": "위치 확인",
-                     "url": "http://map.daum.net/?eX="+lat+"&eY="+lng+"&eName="+reply
-                     */
-
-                    "label": "위치 확인",
-                    "url": "http://52.79.83.51:2721/map"
-
+		    // "url":"http://map.daum.net/link/to/경희대학교병원,37.593774,127.050741"
+                     "url": "http://map.daum.net/link/to/"+name+",37.541235,127.072055"
                 }
             }
         };
@@ -566,13 +565,13 @@ module.exports = function (router) {
                 query_func(index, sgguMap.get(subindex1), reply, function (nameList, size) {
                     send_hos_list(nameList, size);
                 })
-            }, 3000);
+            }, 1000);
             // find_hos_location(sgguMap.get(subindex1), reply);
         } else if (index == 6) {
-            index = 7;
+            //index = 7;
             setTimeout(function () {
                 find_hos_location(reply)
-            }, 3000);
+            }, 200);
             // 병원 이름 찍은것
         } else if (index == 7) {
             //          console.log(index + "값입니다.");
@@ -587,7 +586,14 @@ module.exports = function (router) {
                 throw err;
             }
             else {
-                sendLocNowInfo(result[0]['lat'], result[0]['lng'], name);
+		var lat = new Array();
+		var lng = new Array();
+		for(var elem in result){
+		   lat.push(result[elem]['lng']);
+		   lng.push(result[elem]['lat']);
+		}
+	
+                sendLocNowInfo(lat[0], lng[0], name);
             }
         });
     }
