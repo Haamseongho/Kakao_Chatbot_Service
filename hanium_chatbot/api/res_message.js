@@ -1487,7 +1487,8 @@ module.exports = function (router) {
             type: req.body.type,
             content: req.body.content
         };
-
+	
+	console.log(_obj.content);
         if (_obj.content == "가야할 병원 분류를 선택") {
             console.log("첫 번째 버튼 클릭");
             index = 1;
@@ -1503,7 +1504,7 @@ module.exports = function (router) {
             // 처음 들어갈 땐 subindex1은 0 이기에 아래 함수로 진행되고 아래 함수에서
             // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
             // 동을 선택하도록 진행.
-            console.log(index);
+            
             save_second_reply(_obj.content);
         }
 
