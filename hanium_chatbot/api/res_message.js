@@ -1096,7 +1096,6 @@ module.exports = function (router) {
 
     function save_second_reply(reply) {
         var message2 = new MessageDB();
-
         if (index == 1) {
             if (reply == "사진으로 아픈 부위 알리기") {
                 // 두 번째 질문과 겹치지 않게 하기 위함.
@@ -1110,12 +1109,19 @@ module.exports = function (router) {
         } else if (index == 2) { // 두 번째 버튼 - 가야할 병원 선택
             index = 5;
             console.log(reply + "index 값 2일 때 ");
-            switch (reply) {
+           
+	    switch (reply) {
                 case "강남구": {
+		    var time_index = 0;
                     subindex1 = 1;
                     sgguMap.set(subindex1, reply);
                     setBtnGangNam();
-                    break;
+		    setTimeout(function(){ query_func(index,sgguMap.get(subindex1),reply,function(nameList,size){
+                	send_hos_list(nameList,size);
+            	    })
+        	},300)
+		    
+	            break;
                 }
 
                 case "강동구": {
@@ -1284,7 +1290,7 @@ module.exports = function (router) {
                     setBtnJoongRang();
                     break;
                 }
-
+		
             }
             //  var setLocationService = new SetLocationService(router,reply);
         } else if (index == 3) {
@@ -1292,12 +1298,10 @@ module.exports = function (router) {
         } else if (index == 4) {
             recognition_part(reply);
         } else if (index == 5) {
-	    query_func(index,sgguMap.get(subindex1),reply,function(err,next){
-		if(err) throw err;
-		else {
-		   find_hos_location(sgguMap.get(subindex1),reply);
-                } 
-       	    });
+	    setTimeout(function(){ query_func(index,sgguMap.get(subindex1),reply,function(nameList,size){
+                        send_hos_list(nameList,size);
+            })
+         },3000)
            // find_hos_location(sgguMap.get(subindex1), reply);
         } else if (index == 6) {
             // hosArray -> list
@@ -1484,7 +1488,8 @@ module.exports = function (router) {
          */
     }
 
-    function query_func(index, gu, dong, callback) {
+
+    function query_func(index, gu, dong ,callback, next) {
         if (index == 5) {
             connection.query("SELECT * FROM testTB2 WHERE id < 10 ;", function (err, result, field) {
                 if (err) {
@@ -1492,7 +1497,7 @@ module.exports = function (router) {
                     throw err;
                 } else {
                    // console.log(result.length + "사이즈 제공");
-
+		   
                     for (var elem in result) {
                         //console.log(result[elem]['name']);
                         locArray[elem] = result[elem]['name'];
@@ -1502,19 +1507,22 @@ module.exports = function (router) {
                     for (var i = 0; i < result.length; i++) {
                         nameList.push(locArray[i]);
                     }
-                    send_hos_list(nameList, result.length);
+		    callback(nameList,result.length);
+		    next;
+           //         send_hos_list(nameList, result.length);
                 }
             });
 	    
-            return callback(index,gu,dong);
+         //   callback(index,gu,dong);
+	 //   return 
         } else {
             console.log('skip .. indexing');
-            // nothing;
+            next;
         }
     }
 
 
-    router.post("/message", checkUserKey, query_func, function (req, res) {
+    router.post("/message", checkUserKey,query_func,function (req, res) {
         const _obj = {
             user_key: req.body.user_key,
             type: req.body.type,
@@ -1541,7 +1549,7 @@ module.exports = function (router) {
             // 구를 선택할 경우 subindex1 값도 변경 되기에 setAddressReply로 넘어감
             // 동을 선택하도록 진행.
 
-            //console.log(index + "/" + _obj.content);
+            console.log(index + "/" + _obj.content);
 	        
             save_second_reply(_obj.content);
         }
