@@ -631,46 +631,24 @@ module.exports = function (router) {
 
 
     function analyze_pictures(pic) {
-        const Vision = require("@google-cloud/vision");
-        const vision = Vision();
-
-        var visionClient = vision({
-            projectId: require("./path/to/cadiStudy-700cb00dfcfe.json").project_id,
-            keyFilename: './path/to/cadiStudy-700cb00dfcfe.json',
-            //clientId: require("./path/to/cadiStudy-700cb00dfcfe.json").client_id
+        'use strict'
+        const private_key = "AIzaSyAB7PWrM3MIwC1cD12SCJt3VEilk0pIZAE";
+        const vision = require("node-cloud-vision-api");
+        vision.init({auth: private_key});
+        const request = new vision.Request({
+            image: new vision.Image({
+                url: pic
+            }),
+            features: [
+                new vision.Feature("FACE_DETECTION", 1),
+                new vision.Feature("LABEL_DETECTION", 10)
+            ]
         });
 
-        console.log(pic + "사진");
-        var type = vision.v1.types.Feature.Type.FACE_DETECTION;
-        var featuresElement = {
-            type: type
-        };
-        var features = [featuresElement];
-
-        var source = {
-            pic: pic
-        };
-        var image = {
-            source: source
-        };
-        var requestsElement = {
-            image: image,
-            features: features
-        };
-        var requests = [requestsElement];
-
-        visionClient.batchAnnotateImages({requests: requests}).then(function (responses) {
-            var response = responses[0];
+        vision.annotate(request).then(function (response) {
+            res.send(JSON.stringify(response.responses));
         }).catch(function (err) {
-            console.error(err);
-        });
-
-        visionClient.labelDetection({requests: requests}).then((results) => {
-            const labels = results[0].labelAnnotations;
-            console.log('Labels:');
-            labels.forEach((label) => console.log(label.description));
-        }).catch((err) => {
-            console.error('Error : ', err);
+            console.log("error : " + err);
         });
     }
 
