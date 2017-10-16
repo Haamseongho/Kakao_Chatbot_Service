@@ -750,7 +750,7 @@ module.exports = function (router) {
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons" : partsList
+                "buttons" : "123"
             }
         };
     }
