@@ -637,6 +637,7 @@ module.exports = function (router) {
 
         var labelBtn = [];
         var labelMsg = "";
+
         const private_key = "AIzaSyAB7PWrM3MIwC1cD12SCJt3VEilk0pIZAE";
         const vision = require("node-cloud-vision-api");
         vision.init({auth: private_key});
@@ -670,18 +671,6 @@ module.exports = function (router) {
                     for (var i = 0; i < result.length; i++) {
                         labelBtn.push(nameArray[i]);
                     }
-                    setTimeout(function () {
-		/*
-                        find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
-                            if (err) throw err;
-                            else {
-                                console.log(JSON.stringify(message));
-                                index = 8;
-                            }
-                        })
-		*/
-		setLocation1();
-                    }, 2000)
                 }
             });
 
@@ -703,22 +692,35 @@ module.exports = function (router) {
              */
 
         });
+
+        setTimeout(function () {
+            /*
+             find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+             if (err) throw err;
+             else {
+             console.log(JSON.stringify(message));
+             index = 8;
+             }
+             })
+             */
+            setLocation1();
+        }, 2000)
     }
 
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
-         //setLocation1();
-	/*
-	 message = {
-            "message": {
-                "text":"확인절차를 기다리는 중" 
-            },
-            "keyboard": {
-                "type": "buttons",
-                "buttons": [ "abcd","bcde","cdef" ] 
-            }
-        };
-	*/
+        //setLocation1();
+        /*
+         message = {
+         "message": {
+         "text":"확인절차를 기다리는 중"
+         },
+         "keyboard": {
+         "type": "buttons",
+         "buttons": [ "abcd","bcde","cdef" ]
+         }
+         };
+         */
         //return callback(message);
     }
 
