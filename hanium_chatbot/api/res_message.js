@@ -747,10 +747,10 @@ module.exports = function (router) {
 
         setTimeout(function () {
             send_hos_list_by_part(partsList, function (message) {
-                index = 10;
                 console.log(JSON.stringify(message));
+		index = 10;
             });
-        }, 500);
+        }, 1000);
 
         /*
          send_hos_list_by_part(partsList,function(err){
