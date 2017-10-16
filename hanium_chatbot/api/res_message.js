@@ -579,139 +579,122 @@ module.exports = function (router) {
             setLocation1();
             console.log(reply);
         }
-    }
+    };
+
+
+function find_hos_location(name) {
+    console.log(name);
+    connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + name + "';", function (err, result, field) {
+        if (err) {
+            console.log("이 부분에서 index는 돌까요?");
+            throw err;
+        }
+        else {
+            var lat = new Array();
+            var lng = new Array();
+            for (var elem in result) {
+                lat.push(result[elem]['lng']);
+                lng.push(result[elem]['lat']);
+            }
+
+            sendLocNowInfo(lat[0], lng[0], name);
+        }
+    });
 }
 
-    function find_hos_location(name) {
-        console.log(name);
-        connection.query("SELECT * FROM testTB2 WHERE name = " + "'" + name + "';", function (err, result, field) {
-            if (err) {
-                console.log("이 부분에서 index는 돌까요?");
-                throw err;
-            }
-            else {
-                var lat = new Array();
-                var lng = new Array();
-                for (var elem in result) {
-                    lat.push(result[elem]['lng']);
-                    lng.push(result[elem]['lat']);
-                }
-
-                sendLocNowInfo(lat[0], lng[0], name);
-            }
-        });
-    }
-
 // button 추가 될 경우 index를 다르게 하여 save_second_~~ 로 접근
-    function send_hos_list(nameList, size) {
-        // locArray - nameArray : 병원 이름 넣어둔 배열
-        // reply -- 병원 명이 됨
-        message = {
-            "message": {
-                "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
-            },
-            "keyboard": {
-                "type": "buttons",
-                "buttons": nameList
-            }
-        };
-        index = 6;
-    }
+function send_hos_list(nameList, size) {
+    // locArray - nameArray : 병원 이름 넣어둔 배열
+    // reply -- 병원 명이 됨
+    message = {
+        "message": {
+            "text": "선택 하신 위치에서 갈 수 있는 병원 리스트입니다. 선택 시에 해당 지역까지 길찾기 기능이 제공됩니다."
+        },
+        "keyboard": {
+            "type": "buttons",
+            "buttons": nameList
+        }
+    };
+    index = 6;
+}
 
-    function recognition_pic(pic) {
-        console.log(pic + "사진 경로 입니다.");
+function recognition_pic(pic) {
+    console.log(pic + "사진 경로 입니다.");
 
-        message = {
-            "message": {
-                "text": "확인 중 입니다. 잠시만 기다려주세요."
-            },
-            "keyboard": {
-                "type": "text"
-            }
-        };
+    message = {
+        "message": {
+            "text": "확인 중 입니다. 잠시만 기다려주세요."
+        },
+        "keyboard": {
+            "type": "text"
+        }
+    };
 
-        analyze_pictures(pic);
-    }
-
-
-    function analyze_pictures(pic) {
-        'use strict';
-
-        var labelBtn = [];
-        var labelMsg = "";
-
-        const private_key = "AIzaSyAB7PWrM3MIwC1cD12SCJt3VEilk0pIZAE";
-        const vision = require("node-cloud-vision-api");
-        vision.init({auth: private_key});
-        const request = new vision.Request({
-            image: new vision.Image({
-                url: pic
-            }),
-            features: [
-                new vision.Feature("LABEL_DETECTION", 10)
-            ]
-        });
-
-        vision.annotate(request).then(function (response) {
-            var tp1 = response['responses'][0]['labelAnnotations'][0].score; // top point 1
-            var tp2 = response['responses'][0]['labelAnnotations'][1].score; // top point 2
-            var dscp1 = response['responses'][0]['labelAnnotations'][0].description; // top description 1
-            var dscp2 = response['responses'][0]['labelAnnotations'][1].description; // top description 2
-            var nameArray = new Array();
-
-            labelMsg += "인식 결과, 가장 높은 확률인 " + tp1 + "% 의 결과로 " + dscp1 + " 부위로 인식하였으며, " + "그 다음 높은 확률인 " + tp2 + "% 의 결과로 "
-                + dscp2 + " 부위가 인식되었습니다. " + "관련된 병원 리스트를 지금 소개해 드리겠습니다.";
-            console.log(dscp1 + " / " + dscp2);
-            connection.query("SELECT * FROM testTB2 WHERE part IN (" + "'" + dscp1 + "','" + dscp2 + "'" + ");", function (err, result, field) {
-                if (err) throw err;
-                else {
-                    for (var elem in result) {
-                        nameArray[elem] = result[elem]['name'];
-                    }
+    analyze_pictures(pic);
+}
 
 
-                    for (var i = 0; i < result.length; i++) {
-                        labelBtn.push(nameArray[i]);
-			console.log(labelBtn[i]);
-                    }
+function analyze_pictures(pic) {
+    'use strict';
+
+    var labelBtn = [];
+    var labelMsg = "";
+
+    const private_key = "AIzaSyAB7PWrM3MIwC1cD12SCJt3VEilk0pIZAE";
+    const vision = require("node-cloud-vision-api");
+    vision.init({auth: private_key});
+    const request = new vision.Request({
+        image: new vision.Image({
+            url: pic
+        }),
+        features: [
+            new vision.Feature("LABEL_DETECTION", 10)
+        ]
+    });
+
+    vision.annotate(request).then(function (response) {
+        var tp1 = response['responses'][0]['labelAnnotations'][0].score; // top point 1
+        var tp2 = response['responses'][0]['labelAnnotations'][1].score; // top point 2
+        var dscp1 = response['responses'][0]['labelAnnotations'][0].description; // top description 1
+        var dscp2 = response['responses'][0]['labelAnnotations'][1].description; // top description 2
+        var nameArray = new Array();
+
+        labelMsg += "인식 결과, 가장 높은 확률인 " + tp1 + "% 의 결과로 " + dscp1 + " 부위로 인식하였으며, " + "그 다음 높은 확률인 " + tp2 + "% 의 결과로 "
+            + dscp2 + " 부위가 인식되었습니다. " + "관련된 병원 리스트를 지금 소개해 드리겠습니다.";
+        console.log(dscp1 + " / " + dscp2);
+        connection.query("SELECT * FROM testTB2 WHERE part IN (" + "'" + dscp1 + "','" + dscp2 + "'" + ");", function (err, result, field) {
+            if (err) throw err;
+            else {
+                for (var elem in result) {
+                    nameArray[elem] = result[elem]['name'];
                 }
-		index = 8;
-            });
 
 
-            /*
-             find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
-             if (err) console.error(err);
-             else {
-             console.log(JSON.stringify(message));
-             }
-             });
-             }, 2000);
-
-             console.log(JSON.stringify(response.responses));
-             index = 8;
-             }).catch(function (err) {
-             console.log("error : " + err);
-             });
-             */
-
+                for (var i = 0; i < result.length; i++) {
+                    labelBtn.push(nameArray[i]);
+                    console.log(labelBtn[i]);
+                }
+            }
+            index = 8;
         });
+    });
+}
 
-/*
-        setTimeout(function () {
-            
-             find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
-             if (err) throw err;
-             else {
-             console.log(JSON.stringify(message));
-             index = 8;
-             }
-             })
-             
-            setLocation1();
-        }, 2000)
-    }
-*/
+    /*
+     setTimeout(function () {
+
+     find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+     if (err) throw err;
+     else {
+     console.log(JSON.stringify(message));
+     index = 8;
+     }
+     })
+
+     setLocation1();
+     }, 2000)
+     }
+     */
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
         //setLocation1();
