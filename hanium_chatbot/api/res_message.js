@@ -671,6 +671,7 @@ module.exports = function (router) {
                         labelBtn.push(nameArray[i]);
                     }
                     setTimeout(function () {
+		/*
                         find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
                             if (err) throw err;
                             else {
@@ -678,6 +679,8 @@ module.exports = function (router) {
                                 index = 8;
                             }
                         })
+		*/
+		setLocation1();
                     }, 2000)
                 }
             });
@@ -704,16 +707,19 @@ module.exports = function (router) {
 
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
-        message = {
+         //setLocation1();
+	/*
+	 message = {
             "message": {
-                "text": labelMsg
+                "text":"확인절차를 기다리는 중" 
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons": labelBtn
+                "buttons": [ "abcd","bcde","cdef" ] 
             }
         };
-        return callback(message);
+	*/
+        //return callback(message);
     }
 
     function recognition_part(part) {
