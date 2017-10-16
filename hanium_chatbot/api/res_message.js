@@ -576,9 +576,11 @@ module.exports = function (router) {
         } else if (index == 7) {
             //          console.log(index + "값입니다.");
         } else if (index == 8) {
+            setLocation1();
             console.log(reply);
         }
     }
+}
 
     function find_hos_location(name) {
         console.log(name);
@@ -670,8 +672,10 @@ module.exports = function (router) {
 
                     for (var i = 0; i < result.length; i++) {
                         labelBtn.push(nameArray[i]);
+			console.log(labelBtn[i]);
                     }
                 }
+		index = 8;
             });
 
 
@@ -693,8 +697,9 @@ module.exports = function (router) {
 
         });
 
+/*
         setTimeout(function () {
-            /*
+            
              find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
              if (err) throw err;
              else {
@@ -702,11 +707,11 @@ module.exports = function (router) {
              index = 8;
              }
              })
-             */
+             
             setLocation1();
         }, 2000)
     }
-
+*/
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
         //setLocation1();
