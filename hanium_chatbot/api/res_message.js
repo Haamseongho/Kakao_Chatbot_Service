@@ -656,8 +656,8 @@ module.exports = function (router) {
 
             labelMsg += "인식 결과, 가장 높은 확률인 " + tp1 + "% 의 결과로 " + dscp1 + " 부위로 인식하였으며, " + "그 다음 높은 확률인 " + tp2 + "% 의 결과로 "
                 + dscp2 + " 부위가 인식되었습니다. " + "관련된 병원 리스트를 지금 소개해 드리겠습니다.";
-
-            connection.query("SELECT * FROM testTB2 WHERE part IN (" + "'" + dscp1 + "'" + "," + +"'" + dscp2 + "'" + ");", function (err, result, field) {
+	    console.log(dscp1 + " / " + dscp2);
+            connection.query("SELECT * FROM testTB2 WHERE part IN ("+ "'" + dscp1 +"','"+ dscp2 +"'"+  ");", function (err, result, field) {
                 if (err) throw err;
                 else {
                     for (var elem in result) {
@@ -671,9 +671,19 @@ module.exports = function (router) {
                 }
             });
 
-
             setTimeout(function () {  // 인식 이 후에 2초 뒤에 메세지 리스트 뿌려주기 .. 여기서 index 8 주고 거기서 눌린 버튼을 reply로 해서 지도로 연동
-                find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+                  message = {
+     	   	    "message": {
+           	    "text": labelMsg
+                },
+            	    "keyboard": {
+                    "type": "buttons",
+                    "buttons": labelBtn
+            	}
+             };
+	});
+/*
+		find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
                     if (err) console.error(err);
                     else {
                         console.log(JSON.stringify(message));
@@ -686,7 +696,9 @@ module.exports = function (router) {
         }).catch(function (err) {
             console.log("error : " + err);
         });
+*/
     }
+
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
         message = {
@@ -698,6 +710,7 @@ module.exports = function (router) {
                 "buttons": labelBtn
             }
         };
+
 
         return callback(new Error('인식 내용을 기반으로 버튼 리스트 뽑기 실패'), message);
     }
