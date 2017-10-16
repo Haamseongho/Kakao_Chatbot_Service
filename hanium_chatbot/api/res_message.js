@@ -672,7 +672,7 @@ module.exports = function (router) {
                     }
                     setTimeout(function () {
                         find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
-                            if (err) console.error(err);
+                            if (err) throw err;
                             else {
                                 console.log(JSON.stringify(message));
                                 index = 8;
@@ -713,7 +713,7 @@ module.exports = function (router) {
                 "buttons": labelBtn
             }
         };
-        return callback(new Error('인식 내용을 기반으로 버튼 리스트 뽑기 실패'), message);
+        return callback(message);
     }
 
     function recognition_part(part) {
