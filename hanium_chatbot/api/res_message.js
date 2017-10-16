@@ -27,7 +27,7 @@ var locMsg = {};  // 리스트 뿌리기 (병원명)
 var locArray = new Array(); // 병원 명 들어갈 배열
 var hosListSize = undefined;
 var labelBtn = []; // find_hos_list_by_img 에서 사용 
-
+var partsList = [];
 
 var connection = mysql.createConnection({
     host: 'helpdb.crqysrfu2n53.ap-northeast-2.rds.amazonaws.com',
@@ -563,7 +563,12 @@ module.exports = function (router) {
             recognition_pic(reply);
         } else if (index == 4) {
             index = 10; // list --> name (list) //
-            recognition_part(reply);
+            recognition_part(reply,function (err) {
+                if(err) console.log("부위 인식 에러 (대표명)");
+                else{
+                    send_hos_list_by_part(partsList);
+                }
+            });
         } else if (index == 5) {
             setTimeout(function () {
                 query_func(index, sgguMap.get(subindex1), reply, function (nameList, size) {
@@ -587,11 +592,8 @@ module.exports = function (router) {
             setTimeout(function () {
                 find_hos_location(reply);
             }, 200);
-        }else if(index == 10){
-            console.log(reply + " / "+ index); // 병원 리스트 출력
-            setTimeout(function () {
-                find_hos_location(reply);
-            },200);
+        } else if (index == 10) {
+            console.log(reply + " / " + index); // 병원 리스트 출력
         }
     };
 
@@ -725,12 +727,11 @@ module.exports = function (router) {
         index = 9;
     }
 
-    function recognition_part(part) {
+    function recognition_part(part,callback) {
         console.log(part + "입니다.");
         // part -- 누른 부위
         var nameArray = new Array();
-        var partsList = [];
-        connection.query("SELECT * FROM testTB2 WHERE part LIKES " + "'%" + part + "%';", function (err, result, field) {
+        connection.query("SELECT * FROM testTB2 WHERE part LIKE " + "'%" + part + "%';", function (err, result, field) {
             if (err) console.log("아픈 부위 선택 이 후에 병원 리스트 뽑는 쿼리 부분 에러");
             else {
                 for (var elem in result) {
@@ -744,13 +745,23 @@ module.exports = function (router) {
                 }
             }
         });
+
+        /*
+         send_hos_list_by_part(partsList,function(err){
+         if(err) console.log('부위별 병원 리스트 출력 에러');
+         else console.log('부위별 병원 리스트 출력 성공');
+         });
+         */
+    }
+
+    function send_hos_list_by_part(partsList) {
         message = {
             "message": {
-                "text": "선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요."
+                "text": "선택한 부위를 잘하는 병원을 소개해 드립니다."
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons" : "123"
+                "buttons": partsList
             }
         };
     }
