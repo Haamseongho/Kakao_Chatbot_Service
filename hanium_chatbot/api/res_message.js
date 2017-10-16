@@ -163,10 +163,10 @@ module.exports = function (router) {
 
     function sendLocNowInfo(lat, lng, name) {
         console.log("지도 연동까지는 되나..?");
-	console.log(lat +" // " + lng + " // " + name );
-	var latitude = (String(lat)).substr(0,9);
-	var longitude = (String(lng)).substr(0,10);
-	console.log(latitude +"/"+longitude);
+        console.log(lat + " // " + lng + " // " + name);
+        var latitude = (String(lat)).substr(0, 9);
+        var longitude = (String(lng)).substr(0, 10);
+        console.log(latitude + "/" + longitude);
         message = {
             "message": {
                 "text": "현재 위치를 체크합니다.",
@@ -176,9 +176,9 @@ module.exports = function (router) {
                     "height": 480
                 },
                 "message_button": {
-                     "label": "위치 확인",
-		    // "url":"http://map.daum.net/link/to/경희대학교병원,37.593774,127.050741"
-                     "url": "http://map.daum.net/link/to/"+name+",37.541235,127.072055"
+                    "label": "위치 확인",
+                    // "url":"http://map.daum.net/link/to/경희대학교병원,37.593774,127.050741"
+                    "url": "http://map.daum.net/link/to/" + name + ",37.541235,127.072055"
                 }
             }
         };
@@ -586,13 +586,13 @@ module.exports = function (router) {
                 throw err;
             }
             else {
-		var lat = new Array();
-		var lng = new Array();
-		for(var elem in result){
-		   lat.push(result[elem]['lng']);
-		   lng.push(result[elem]['lat']);
-		}
-	
+                var lat = new Array();
+                var lng = new Array();
+                for (var elem in result) {
+                    lat.push(result[elem]['lng']);
+                    lng.push(result[elem]['lat']);
+                }
+
                 sendLocNowInfo(lat[0], lng[0], name);
             }
         });
@@ -631,7 +631,10 @@ module.exports = function (router) {
 
 
     function analyze_pictures(pic) {
-        'use strict'
+        'use strict';
+
+        var labelBtn = [];
+        var labelMsg = "";
         const private_key = "AIzaSyAB7PWrM3MIwC1cD12SCJt3VEilk0pIZAE";
         const vision = require("node-cloud-vision-api");
         vision.init({auth: private_key});
@@ -640,16 +643,63 @@ module.exports = function (router) {
                 url: pic
             }),
             features: [
-                new vision.Feature("FACE_DETECTION", 1),
                 new vision.Feature("LABEL_DETECTION", 10)
             ]
         });
 
         vision.annotate(request).then(function (response) {
+            var tp1 = response['responses'][0]['labelAnnotations'][0].score; // top point 1
+            var tp2 = response['responses'][0]['labelAnnotations'][1].score; // top point 2
+            var dscp1 = response['responses'][0]['labelAnnotations'][0].description; // top description 1
+            var dscp2 = response['responses'][0]['labelAnnotations'][1].description; // top description 2
+            var nameArray = new Array();
+
+            labelMsg += "인식 결과, 가장 높은 확률인 " + tp1 + "% 의 결과로 " + dscp1 + " 부위로 인식하였으며, " + "그 다음 높은 확률인 " + tp2 + "% 의 결과로 "
+                + dscp2 + " 부위가 인식되었습니다. " + "관련된 병원 리스트를 지금 소개해 드리겠습니다.";
+
+            connection.query("SELECT * FROM testTB2 WHERE part IN (" + "'" + dscp1 + "'" + "," + +"'" + dscp2 + "'" + ");", function (err, result, field) {
+                if (err) throw err;
+                else {
+                    for (var elem in result) {
+                        nameArray[elem] = result[elem]['name'];
+                    }
+
+
+                    for (var i = 0; i < result.length; i++) {
+                        labelBtn.push(nameArray[i]);
+                    }
+                }
+            });
+
+
+            setTimeout(function () {  // 인식 이 후에 2초 뒤에 메세지 리스트 뿌려주기 .. 여기서 index 8 주고 거기서 눌린 버튼을 reply로 해서 지도로 연동
+                find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+                    if (err) console.error(err);
+                    else {
+                        console.log(JSON.stringify(message));
+                    }
+                });
+            }, 2000);
+
             console.log(JSON.stringify(response.responses));
+            index = 8;
         }).catch(function (err) {
             console.log("error : " + err);
         });
+    }
+
+    function find_hos_list_by_img(labelMsg, labelBtn, callback) {
+        message = {
+            "message": {
+                "text": labelMsg
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": labelBtn
+            }
+        };
+
+        return callback(new Error('인식 내용을 기반으로 버튼 리스트 뽑기 실패'), message);
     }
 
     function recognition_part(part) {
