@@ -575,6 +575,8 @@ module.exports = function (router) {
             // 병원 이름 찍은것
         } else if (index == 7) {
             //          console.log(index + "값입니다.");
+        } else if (index == 8) {
+            console.log(reply);
         }
     }
 
@@ -668,18 +670,15 @@ module.exports = function (router) {
                     for (var i = 0; i < result.length; i++) {
                         labelBtn.push(nameArray[i]);
                     }
-
-                    setTimeout(function () {  // 인식 이 후에 2초 뒤에 메세지 리스트 뿌려주기 .. 여기서 index 8 주고 거기서 눌린 버튼을 reply로 해서 지도로 연동
-                        message = {
-                            "message": {
-                                "text": labelMsg
-                            },
-                            "keyboard": {
-                                "type": "buttons",
-                                "buttons": labelBtn
+                    setTimeout(function () {
+                        find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+                            if (err) console.error(err);
+                            else {
+                                console.log(JSON.stringify(message));
+                                index = 8;
                             }
-                        };
-                    }, 2000);
+                        })
+                    }, 2000)
                 }
             });
 
@@ -714,8 +713,6 @@ module.exports = function (router) {
                 "buttons": labelBtn
             }
         };
-
-
         return callback(new Error('인식 내용을 기반으로 버튼 리스트 뽑기 실패'), message);
     }
 
