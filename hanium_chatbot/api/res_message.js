@@ -579,7 +579,6 @@ module.exports = function (router) {
         } else if (index == 7) {
             //          console.log(index + "값입니다.");
         } else if (index == 8) {
-	    index = 9 ;
 	    setTimeout(function(){
    		find_hos_location(reply);
 	    },200);
@@ -717,7 +716,7 @@ module.exports = function (router) {
             else console.log(httpResponse + "전송 성공");
         });
  */
-        index = 8;
+        index = 9; 
     }
 
     function recognition_part(part) {
