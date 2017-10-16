@@ -26,6 +26,9 @@ var mysql = require("mysql");
 var locMsg = {};  // 리스트 뿌리기 (병원명)
 var locArray = new Array(); // 병원 명 들어갈 배열
 var hosListSize = undefined;
+var labelBtn = []; // find_hos_list_by_img 에서 사용 
+
+
 var connection = mysql.createConnection({
     host: 'helpdb.crqysrfu2n53.ap-northeast-2.rds.amazonaws.com',
     user: 'haams',
@@ -576,8 +579,15 @@ module.exports = function (router) {
         } else if (index == 7) {
             //          console.log(index + "값입니다.");
         } else if (index == 8) {
-            console.log(reply);
-        }
+	    index = 9 ;
+	    setTimeout(function(){
+   		find_hos_location(reply);
+	    },200);
+        } else if (index == 9){
+	    setTimeout(function(){
+		find_hos_location(reply);
+	    },200);
+        } 
     };
 
 
@@ -622,7 +632,7 @@ module.exports = function (router) {
 
         message = {
             "message": {
-                "text": "확인 중 입니다. 잠시만 기다려주세요."
+                "text": "확인 중 입니다. 잠시만 기다려주세요. 약 3~5초 뒤에 확인을 적어주세요."
             },
             "keyboard": {
                 "type": "text"
@@ -637,7 +647,6 @@ module.exports = function (router) {
     function analyze_pictures(pic) {
         'use strict';
 
-        var labelBtn = [];
         var labelMsg = "";
 
 
@@ -663,17 +672,20 @@ module.exports = function (router) {
             labelMsg += "인식 결과, 가장 높은 확률인 " + tp1 + "% 의 결과로 " + dscp1 + " 부위로 인식하였으며, " + "그 다음 높은 확률인 " + tp2 + "% 의 결과로 "
                 + dscp2 + " 부위가 인식되었습니다. " + "관련된 병원 리스트를 지금 소개해 드리겠습니다.";
             console.log(dscp1 + " / " + dscp2);
-            connection.query("SELECT * FROM testTB2 WHERE part IN (" + "'" + dscp1 + "','" + dscp2 + "'" + ");", function (err, result, field) {
+            connection.query("SELECT * FROM testTB2 WHERE part LIKE " + "'%" + dscp1 + "%';", function (err, result, field) {
+
                 if (err) throw err;
                 else {
                     for (var elem in result) {
-                        nameArray[elem] = result[elem]['name'];
+		       if(result[elem]['name']!= undefined){
+                           nameArray[elem] = result[elem]['name'];
+		       }else{
+			   // null은 저장 하지 않음.
+		       }
                     }
-
 
                     for (var i = 0; i < result.length; i++) {
                         labelBtn.push(nameArray[i]);
-                        console.log(labelBtn[i]);
                     }
                 }
                 setTimeout(function () {
@@ -691,18 +703,20 @@ module.exports = function (router) {
         //setLocation1();
         message = {
             "message": {
-                "text": "확인절차를 기다리는 중"
+                "text": labelMsg 
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons": ["abcd", "bcde", "cdef"]
+                "buttons": labelBtn
             }
         };
+ /*
         var request = require("request");
-        request.post({url:"http://52.79.83.51:2721/message", checkUserKey , form: {message: message}}, function (err, httpResponse, body) {
+        request.post({url:"http://52.79.83.51:2721/message", form: {message: message}}, function (err, httpResponse, body) {
             if (err) console.log("message post 전송 에러");
             else console.log(httpResponse + "전송 성공");
         });
+ */
         index = 8;
     }
 
