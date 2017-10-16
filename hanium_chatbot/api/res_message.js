@@ -699,7 +699,7 @@ module.exports = function (router) {
             }
         };
         var request = require("request");
-        request.post("/message", {message: message}, function (err, httpResponse, body) {
+        request.post({url:"http://52.79.83.51:2721/message", form: {message: message}}, function (err, httpResponse, body) {
             if (err) console.log("message post 전송 에러");
             else console.log(httpResponse + "전송 성공");
         });
