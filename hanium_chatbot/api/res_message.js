@@ -588,6 +588,7 @@ module.exports = function (router) {
                 find_hos_location(reply);
             }, 200);
         } else if (index == 10) {
+            find_hos_location(reply);
             console.log(reply + " / " + index); // 병원 리스트 출력
         }
     };
@@ -743,6 +744,7 @@ module.exports = function (router) {
 
         setTimeout(function () {
             send_hos_list_by_part(partsList, function (message) {
+                index = 10;
                 console.log(JSON.stringify(message));
             });
         }, 200);
