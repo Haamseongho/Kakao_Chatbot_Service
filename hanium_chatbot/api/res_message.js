@@ -562,13 +562,8 @@ module.exports = function (router) {
         } else if (index == 3) {
             recognition_pic(reply);
         } else if (index == 4) {
-            index = 10; // list --> name (list) //
-            recognition_part(reply,function (err) {
-                if(err) console.log("부위 인식 에러 (대표명)");
-                else{
-                    send_hos_list_by_part(partsList);
-                }
-            });
+             // list --> name (list) //
+            recognition_part(reply); 
         } else if (index == 5) {
             setTimeout(function () {
                 query_func(index, sgguMap.get(subindex1), reply, function (nameList, size) {
@@ -745,6 +740,10 @@ module.exports = function (router) {
                 }
             }
         });
+	send_hos_list_by_part(partsList,function(err){
+	     if(err) console.log('선택한 부위에 대한 병원 리스트 에러');
+	     else console.log('선택한 부위에 대한 병원 리스트 성공');
+	});
 
         /*
          send_hos_list_by_part(partsList,function(err){
@@ -754,7 +753,7 @@ module.exports = function (router) {
          */
     }
 
-    function send_hos_list_by_part(partsList) {
+    function send_hos_list_by_part(partsList,callback) {
         message = {
             "message": {
                 "text": "선택한 부위를 잘하는 병원을 소개해 드립니다."
