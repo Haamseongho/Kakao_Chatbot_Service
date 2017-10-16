@@ -656,8 +656,8 @@ module.exports = function (router) {
 
             labelMsg += "인식 결과, 가장 높은 확률인 " + tp1 + "% 의 결과로 " + dscp1 + " 부위로 인식하였으며, " + "그 다음 높은 확률인 " + tp2 + "% 의 결과로 "
                 + dscp2 + " 부위가 인식되었습니다. " + "관련된 병원 리스트를 지금 소개해 드리겠습니다.";
-	    console.log(dscp1 + " / " + dscp2);
-            connection.query("SELECT * FROM testTB2 WHERE part IN ("+ "'" + dscp1 +"','"+ dscp2 +"'"+  ");", function (err, result, field) {
+            console.log(dscp1 + " / " + dscp2);
+            connection.query("SELECT * FROM testTB2 WHERE part IN (" + "'" + dscp1 + "','" + dscp2 + "'" + ");", function (err, result, field) {
                 if (err) throw err;
                 else {
                     for (var elem in result) {
@@ -672,32 +672,36 @@ module.exports = function (router) {
             });
 
             setTimeout(function () {  // 인식 이 후에 2초 뒤에 메세지 리스트 뿌려주기 .. 여기서 index 8 주고 거기서 눌린 버튼을 reply로 해서 지도로 연동
-                  message = {
-     	   	    "message": {
-           	    "text": labelMsg
-                },
-            	    "keyboard": {
-                    "type": "buttons",
-                    "buttons": labelBtn
-            	}
-             };
-	});
-/*
-		find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
-                    if (err) console.error(err);
-                    else {
-                        console.log(JSON.stringify(message));
+                message = {
+                    "message": {
+                        "text": labelMsg
+                    },
+                    "keyboard": {
+                        "type": "buttons",
+                        "buttons": labelBtn
                     }
-                });
-            }, 2000);
+                };
 
-            console.log(JSON.stringify(response.responses));
-            index = 8;
-        }).catch(function (err) {
-            console.log("error : " + err);
+                /*
+                 find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+                 if (err) console.error(err);
+                 else {
+                 console.log(JSON.stringify(message));
+                 }
+                 });
+                 }, 2000);
+
+                 console.log(JSON.stringify(response.responses));
+                 index = 8;
+                 }).catch(function (err) {
+                 console.log("error : " + err);
+                 });
+                 */
+            },2000);
         });
-*/
     }
+
+
 
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
