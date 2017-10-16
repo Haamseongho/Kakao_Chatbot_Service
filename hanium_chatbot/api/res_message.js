@@ -727,27 +727,30 @@ module.exports = function (router) {
         console.log(part + "입니다.");
         // part -- 누른 부위
         var nameArray = new Array();
-        connection.query("SELECT * FROM testTB2 WHERE part LIKE " + "'%" + part + "%';", function (err, result, field) {
-            if (err) console.log("아픈 부위 선택 이 후에 병원 리스트 뽑는 쿼리 부분 에러");
-            else {
-                for (var elem in result) {
-                    if (result[elem]['name'] != undefined) {
-                        nameArray[elem] = result[elem]['name'];
+        setTimeout(function () {
+            connection.query("SELECT * FROM testTB2 WHERE part LIKE " + "'%" + part + "%';", function (err, result, field) {
+                if (err) console.log("아픈 부위 선택 이 후에 병원 리스트 뽑는 쿼리 부분 에러");
+                else {
+                    for (var elem in result) {
+                        if (result[elem]['name'] != undefined) {
+                            nameArray[elem] = result[elem]['name'];
+                        }
+                    }
+
+                    for (var i = 0; i < result.length; i++) {
+                        partsList.push(nameArray[i]);
                     }
                 }
+            });
+        },200);
 
-                for (var i = 0; i < result.length; i++) {
-                    partsList.push(nameArray[i]);
-                }
-            }
-        });
 
         setTimeout(function () {
             send_hos_list_by_part(partsList, function (message) {
                 index = 10;
                 console.log(JSON.stringify(message));
             });
-        }, 200);
+        }, 500);
 
         /*
          send_hos_list_by_part(partsList,function(err){
