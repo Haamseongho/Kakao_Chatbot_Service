@@ -562,6 +562,7 @@ module.exports = function (router) {
         } else if (index == 3) {
             recognition_pic(reply);
         } else if (index == 4) {
+            index = 10; // list --> name (list) //
             recognition_part(reply);
         } else if (index == 5) {
             setTimeout(function () {
@@ -579,14 +580,19 @@ module.exports = function (router) {
         } else if (index == 7) {
             //          console.log(index + "값입니다.");
         } else if (index == 8) {
-	    setTimeout(function(){
-   		find_hos_location(reply);
-	    },200);
-        } else if (index == 9){
-	    setTimeout(function(){
-		find_hos_location(reply);
-	    },200);
-        } 
+            setTimeout(function () {
+                find_hos_location(reply);
+            }, 200);
+        } else if (index == 9) {
+            setTimeout(function () {
+                find_hos_location(reply);
+            }, 200);
+        }else if(index == 10){
+            console.log(reply + " / "+ index); // 병원 리스트 출력
+            setTimeout(function () {
+                find_hos_location(reply);
+            },200);
+        }
     };
 
 
@@ -676,11 +682,11 @@ module.exports = function (router) {
                 if (err) throw err;
                 else {
                     for (var elem in result) {
-		       if(result[elem]['name']!= undefined){
-                           nameArray[elem] = result[elem]['name'];
-		       }else{
-			   // null은 저장 하지 않음.
-		       }
+                        if (result[elem]['name'] != undefined) {
+                            nameArray[elem] = result[elem]['name'];
+                        } else {
+                            // null은 저장 하지 않음.
+                        }
                     }
 
                     for (var i = 0; i < result.length; i++) {
@@ -702,36 +708,51 @@ module.exports = function (router) {
         //setLocation1();
         message = {
             "message": {
-                "text": labelMsg 
+                "text": labelMsg
             },
             "keyboard": {
                 "type": "buttons",
                 "buttons": labelBtn
             }
         };
- /*
-        var request = require("request");
-        request.post({url:"http://52.79.83.51:2721/message", form: {message: message}}, function (err, httpResponse, body) {
-            if (err) console.log("message post 전송 에러");
-            else console.log(httpResponse + "전송 성공");
-        });
- */
-        index = 9; 
+        /*
+         var request = require("request");
+         request.post({url:"http://52.79.83.51:2721/message", form: {message: message}}, function (err, httpResponse, body) {
+         if (err) console.log("message post 전송 에러");
+         else console.log(httpResponse + "전송 성공");
+         });
+         */
+        index = 9;
     }
 
     function recognition_part(part) {
         console.log(part + "입니다.");
+        // part -- 누른 부위
+        var nameArray = new Array();
+        var partsList = [];
+        connection.query("SELECT * FROM testTB2 WHERE part LIKES " + "'%" + part + "%';", function (err, result, field) {
+            if (err) console.log("아픈 부위 선택 이 후에 병원 리스트 뽑는 쿼리 부분 에러");
+            else {
+                for (var elem in result) {
+                    if (result[elem]['name'] != undefined) {
+                        nameArray[elem] = result[elem]['name'];
+                    }
+                }
+
+                for (var i = 0; i < result.length; i++) {
+                    partsList.push(nameArray[i]);
+                }
+            }
+        });
         message = {
             "message": {
                 "text": "선택한 부위를 잘하는 병원을 소개해드리겠습니다. 잠시만 기다려주세요."
             },
             "keyboard": {
-                "type": "text"
+                "type": "buttons",
+                "buttons" : partsList
             }
         };
-        /*
-         part 가지고 비교해주기..
-         */
     }
 
 
