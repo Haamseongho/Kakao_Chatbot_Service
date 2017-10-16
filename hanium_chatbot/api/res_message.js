@@ -668,40 +668,40 @@ module.exports = function (router) {
                     for (var i = 0; i < result.length; i++) {
                         labelBtn.push(nameArray[i]);
                     }
+
+                    setTimeout(function () {  // 인식 이 후에 2초 뒤에 메세지 리스트 뿌려주기 .. 여기서 index 8 주고 거기서 눌린 버튼을 reply로 해서 지도로 연동
+                        message = {
+                            "message": {
+                                "text": labelMsg
+                            },
+                            "keyboard": {
+                                "type": "buttons",
+                                "buttons": labelBtn
+                            }
+                        };
+                    }, 2000);
                 }
             });
 
-            setTimeout(function () {  // 인식 이 후에 2초 뒤에 메세지 리스트 뿌려주기 .. 여기서 index 8 주고 거기서 눌린 버튼을 reply로 해서 지도로 연동
-                message = {
-                    "message": {
-                        "text": labelMsg
-                    },
-                    "keyboard": {
-                        "type": "buttons",
-                        "buttons": labelBtn
-                    }
-                };
 
-                /*
-                 find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
-                 if (err) console.error(err);
-                 else {
-                 console.log(JSON.stringify(message));
-                 }
-                 });
-                 }, 2000);
+            /*
+             find_hos_list_by_img(labelMsg, labelBtn, function (err, message) {
+             if (err) console.error(err);
+             else {
+             console.log(JSON.stringify(message));
+             }
+             });
+             }, 2000);
 
-                 console.log(JSON.stringify(response.responses));
-                 index = 8;
-                 }).catch(function (err) {
-                 console.log("error : " + err);
-                 });
-                 */
-            },2000);
+             console.log(JSON.stringify(response.responses));
+             index = 8;
+             }).catch(function (err) {
+             console.log("error : " + err);
+             });
+             */
+
         });
     }
-
-
 
 
     function find_hos_list_by_img(labelMsg, labelBtn, callback) {
