@@ -646,7 +646,7 @@ module.exports = function (router) {
         });
 
         vision.annotate(request).then(function (response) {
-            res.send(JSON.stringify(response.responses));
+            console.log(JSON.stringify(response.responses));
         }).catch(function (err) {
             console.log("error : " + err);
         });
