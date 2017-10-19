@@ -3,34 +3,40 @@
 ---
 ## 소개 
 
-##1 . 개발 배경 
-###4차 산업혁명의 도래 & 더 편한 기능을 추구 
+## 1 . 개발 배경 
+
+### 4차 산업혁명의 도래 & 더 편한 기능을 추구 
+
     - 급변하는 IT기술에 따라 현 사회도 빠르게 변화하고 있음
     - IoT,AI기술,빅 데이터 등 여러 기술의 도래로 사람들의 삶이 더 편해지고 있음
     - 변화된 SW기술에 빠르게 적응하는 세대가 등장하고 점차 확산되어 누구나 변화되는 IT기술에 뒤처지지 않으려고 노력함
     
-###OECD국가 주 노동시간 2위 ..직장인들 자신의 건강 챙길 시간이 부족 
-    - 17년 4월 기준 OECD국가에서 노동시간이 많은 나라 2위에 선정
-	- 평균 주 53시간 근무 , 직장인들의 피로 원인 1위 : '야근'
-	- 바쁜 나날 속에서 자신의 건강을 챙기지 못하여 발생하는 합병증 및 질환
+### OECD국가 주 노동시간 2위 ..직장인들 자신의 건강 챙길 시간이 부족 
 
-∴ 변화된 IT흐름에 맞게 최신 트렌드인 봇 기술과 빅데이터 그리고 클라우딩 서비스를 기반으로 직장인들에게 맞는 병원을 손쉽게 알려주고 해당 목적지까지 가는 방법도 제공해주는 병원 매칭 시스템을 기획하게 되었음.
+    - 17년 4월 기준 OECD국가에서 노동시간이 많은 나라 2위에 선정
+    - 평균 주 53시간 근무 , 직장인들의 피로 원인 1위 : '야근'
+    - 바쁜 나날 속에서 자신의 건강을 챙기지 못하여 발생하는 합병증 및 질환
+
+∴ 변화된 IT흐름에 맞게 최신 트렌드인 봇 기술과 빅데이터 그리고 클라우딩 서비스를 기반으로 직장인들에게 
+
+맞는 병원을 손쉽게 알려주고 해당 목적지까지 가는 방법도 제공해주는 병원 매칭 시스템을 기획하게 되었음.
 
 <br />
 
-##2 . 프로젝트 핵심 기술 소개 - [***개요** *]
+## 2 . 프로젝트 핵심 기술 소개 - [*개요 *]
 
 ○  4차 혁명의 물결 속에서 AI 기술과 빅 데이터 기술이 각광받고 있음 
 
 ○  현대인들은 현존하는 SW기술에도 익숙하고 현재 서비스 되고 있는 여러   IT 기술에도 빠르게 적응하고 있음
 
 ○  변화하는 사회에서 핵심 기술인 
+
 **자동화시스템**, **군집화(클러스터링)**, **빠른 응답속도와 정확한 반환 가치** 등이 대두되고 있음. 
 
 <br />
 
 
-##○ 프로젝트 핵심 기술 소개 - [***기술** *]
+## ○ 프로젝트 핵심 기술 소개 - [*기술 *]
 
 
 ### - 클라우드 서비스 (AWS)    
@@ -60,19 +66,19 @@
 > 2. 제공된 부위와 인식률을 가지고 병원 리스트를 뿌려줍니다.
 > 3. 가야할 병원을 선택할 경우 현 위치부터 병원(목적지)까지의 경로를 알려줍니다.
 
-##3. 결과 산출물
+## 3. 결과 산출물
 ### a. 사용자 시나리오 UI
 
 <table border ="1"> 
-   <tr>
-      <td><img src="./images/hos.JPG"></td>
-      <td><img src="./images/hos2.JPG"></td>
-      <td><img src="./images/hos3.JPG"></td>
+   <tr border="1">
+      <td><img src="./images/hos.jpg"></td>
+      <td><img src="./images/hos2.jpg"></td>
+      <td><img src="./images/hos3.jpg"></td>
    </tr>
-   <tr>
-      <td><img src="./images/hos4.JPG"></td>
-      <td><img src="./images/hos5.JPG"></td>
-      <td><img src="./images/hos6.JPG"></td>
+   <tr border="1">
+      <td><img src="./images/hos4.jpg"></td>
+      <td><img src="./images/hos5.jpg"></td>
+      <td><img src="./images/hos6.jpg"></td>
    </tr>
 </table>
 ----
@@ -82,18 +88,18 @@
 
 <table border ="1"> 
    <tr>
-      <td><img src="./images/hadoop.PNG"></td>
-      <td><img src="./images/hadoop2.PNG"></td>
-      <td><img src="./images/hadoop3.PNG"></td>
+      <td><img src="./images/hadoop.png"></td>
+      <td><img src="./images/hadoop2.png"></td>
+      <td><img src="./images/hadoop3.png"></td>
    </tr>
    <tr>
-      <td><img src="./images/sql.PNG"></td>
-      <td><img src="./images/vision.PNG"></td>
+      <td><img src="./images/sql.png"></td>
+      <td><img src="./images/vision.png"></td>
    </tr>
 </table>
 
 ---
-b. 설명 
+#### b. 설명 
 
 (1,1) : hadoop 정리 영상 (HDFS) 모습
 
@@ -107,14 +113,14 @@ b. 설명
 
 <br />
 
-##4. 시연 영상 
+## 4. 시연 영상 
 
 [![Video Label](http://img.youtube.com/vi/s55m_908y_c/0.jpg)](https://youtu.be/s55m_908y_c)
 
 <hr />
 
 
-##5. 소스코드 설명
+## 5. 소스코드 설명
 
 ### <a href="./explain/kakao.md"> " 카카오 API 활용 방법 & 채팅 알고리즘 설명 " </a> 
 
