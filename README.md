@@ -71,14 +71,14 @@
 
 <table border ="1"> 
    <tr border="1">
-      <td><img src="./images/hos.JPG"></td>
-      <td><img src="./images/hos2.JPG"></td>
-      <td><img src="./images/hos3.JPG"></td>
+      <td><img src="./images/hos.jpg"></td>
+      <td><img src="./images/hos2.jpg"></td>
+      <td><img src="./images/hos3.jpg"></td>
    </tr>
    <tr border="1">
-      <td><img src="./images/hos4.JPG"></td>
-      <td><img src="./images/hos5.JPG"></td>
-      <td><img src="./images/hos6.JPG"></td>
+      <td><img src="./images/hos4.jpg"></td>
+      <td><img src="./images/hos5.jpg"></td>
+      <td><img src="./images/hos6.jpg"></td>
    </tr>
 </table>
 ----
@@ -88,18 +88,18 @@
 
 <table border ="1"> 
    <tr>
-      <td><img src="./images/hadoop.PNG"></td>
-      <td><img src="./images/hadoop2.PNG"></td>
-      <td><img src="./images/hadoop3.PNG"></td>
+      <td><img src="./images/hadoop.png"></td>
+      <td><img src="./images/hadoop2.png"></td>
+      <td><img src="./images/hadoop3.png"></td>
    </tr>
    <tr>
-      <td><img src="./images/sql.PNG"></td>
-      <td><img src="./images/vision.PNG"></td>
+      <td><img src="./images/sql.png"></td>
+      <td><img src="./images/vision.png"></td>
    </tr>
 </table>
 
 ---
-b. 설명 
+#### b. 설명 
 
 (1,1) : hadoop 정리 영상 (HDFS) 모습
 
@@ -113,7 +113,7 @@ b. 설명
 
 <br />
 
-##4. 시연 영상 
+## 4. 시연 영상 
 
 [![Video Label](http://img.youtube.com/vi/s55m_908y_c/0.jpg)](https://youtu.be/s55m_908y_c)
 
